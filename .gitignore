@@ -1,0 +1,21 @@
+# Ignore Python bytecode and cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Ignore spear directory
+spear/
+
+# Ignore checkpoints directory
+checkpoints/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+helper/glove_w2v.txt
