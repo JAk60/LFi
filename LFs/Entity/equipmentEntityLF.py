@@ -38,7 +38,7 @@ def convert_to_lower(x):
     return x.lower().strip()
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF1(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the operation involves maintaining the functionality of critical Equipment.', x) == True else ABSTAIN
@@ -52,7 +52,7 @@ def ENTITY_EQUIPMENT_LF1(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF2(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment needs to be inspected for wear and tear.', x) == True else ABSTAIN
@@ -66,7 +66,7 @@ def ENTITY_EQUIPMENT_LF2(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF3(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment requires calibration for accurate performance.', x) == True else ABSTAIN
@@ -80,7 +80,7 @@ def ENTITY_EQUIPMENT_LF3(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF4(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment must be upgraded to meet new operational standards.', x) == True else ABSTAIN
@@ -94,7 +94,7 @@ def ENTITY_EQUIPMENT_LF4(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF5(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment needs to be repaired to ensure operational readiness.', x) == True else ABSTAIN
@@ -108,7 +108,7 @@ def ENTITY_EQUIPMENT_LF5(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF6(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment must be tested for compliance with safety regulations.', x) == True else ABSTAIN
@@ -122,7 +122,7 @@ def ENTITY_EQUIPMENT_LF6(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF7(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment needs to be integrated with other systems for enhanced functionality.', x) == True else ABSTAIN
@@ -136,7 +136,7 @@ def ENTITY_EQUIPMENT_LF7(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF8(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment requires regular maintenance to prevent failures.', x) == True else ABSTAIN
@@ -150,7 +150,7 @@ def ENTITY_EQUIPMENT_LF8(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF9(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment must be monitored for performance metrics.', x) == True else ABSTAIN
@@ -164,7 +164,7 @@ def ENTITY_EQUIPMENT_LF9(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.EQUIPMENT)
 def ENTITY_EQUIPMENT_LF10(x):
-    log_file = f"./csv/ENTITY_EQUIPMENT_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_EQUIPMENT_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.EQUIPMENT if extractor.apply_rule(
         'If the Equipment needs to be secured against potential threats.', x) == True else ABSTAIN

@@ -45,7 +45,7 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF1(x):
-    log_file = f"./csv/MidCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If diplomatic resolution is still possible.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -54,7 +54,7 @@ def MidCritical_LF1(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF2(x):
-    log_file = f"./csv/MidCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If potential conflict exists without direct engagement.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -63,7 +63,7 @@ def MidCritical_LF2(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF3(x):
-    log_file = f"./csv/MidCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If strategic positioning requires cautionary measures.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -72,7 +72,7 @@ def MidCritical_LF3(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF4(x):
-    log_file = f"./csv/MidCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If military presence serves as deterrence.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -81,7 +81,7 @@ def MidCritical_LF4(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF5(x):
-    log_file = f"./csv/MidCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If intelligence gathering is primary objective.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -90,7 +90,7 @@ def MidCritical_LF5(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF6(x):
-    log_file = f"./csv/MidCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If limited military intervention might be required.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -99,7 +99,7 @@ def MidCritical_LF6(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF7(x):
-    log_file = f"./csv/MidCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If monitoring high-risk zones is necessary.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -108,7 +108,7 @@ def MidCritical_LF7(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF8(x):
-    log_file = f"./csv/MidCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If potential escalation risk is moderate.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -117,7 +117,7 @@ def MidCritical_LF8(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF9(x):
-    log_file = f"./csv/MidCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If protective security deployment is needed.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -126,7 +126,7 @@ def MidCritical_LF9(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mid)
 def MidCritical_LF10(x):
-    log_file = f"./csv/MidCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"D:/IITB/LF/LFs/Criticality/csv/MidCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Mid if extractor.apply_rule('If maritime territorial integrity is challenged.', x) else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)

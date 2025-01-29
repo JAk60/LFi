@@ -39,7 +39,7 @@ def convert_to_lower(x):
     return x.lower().strip()
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF1(x):
-    log_file = f"./csv/ENTITY_SHIP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the operation involves navigating the Ship through hazardous waters.', x) == True else ABSTAIN
@@ -53,7 +53,7 @@ def ENTITY_SHIP_LF1(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF2(x):
-    log_file = f"./csv/ENTITY_SHIP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be prepared for extended deployments.', x) == True else ABSTAIN
@@ -67,7 +67,7 @@ def ENTITY_SHIP_LF2(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF3(x):
-    log_file = f"./csv/ENTITY_SHIP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship requires maintenance to ensure seaworthiness.', x) == True else ABSTAIN
@@ -81,7 +81,7 @@ def ENTITY_SHIP_LF3(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF4(x):
-    log_file = f"./csv/ENTITY_SHIP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be equipped with advanced communication systems.', x) == True else ABSTAIN
@@ -95,7 +95,7 @@ def ENTITY_SHIP_LF4(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF5(x):
-    log_file = f"./csv/ENTITY_SHIP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be stocked with essential supplies for the mission.', x) == True else ABSTAIN
@@ -109,7 +109,7 @@ def ENTITY_SHIP_LF5(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF6(x):
-    log_file = f"./csv/ENTITY_SHIP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be manned with trained personnel for specific operations.', x) == True else ABSTAIN
@@ -123,7 +123,7 @@ def ENTITY_SHIP_LF6(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF7(x):
-    log_file = f"./csv/ENTITY_SHIP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship requires upgrades to its defensive capabilities.', x) == True else ABSTAIN
@@ -137,7 +137,7 @@ def ENTITY_SHIP_LF7(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF8(x):
-    log_file = f"./csv/ENTITY_SHIP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be inspected for structural integrity.', x) == True else ABSTAIN
@@ -151,7 +151,7 @@ def ENTITY_SHIP_LF8(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF9(x):
-    log_file = f"./csv/ENTITY_SHIP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be coordinated with other vessels for joint operations.', x) == True else ABSTAIN
@@ -165,7 +165,7 @@ def ENTITY_SHIP_LF9(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF10(x):
-    log_file = f"./csv/ENTITY_SHIP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be positioned strategically for mission success.', x) == True else ABSTAIN

@@ -1,5 +1,3 @@
-import sys
-sys.path.append('./')
 from activitysequencesLF import ACTIVITY_SEQUENCESLFS
 from balancingloadsLF import BALANCING_LOADSLFS
 from capabilityLF import CAPABILITYLFS
@@ -65,42 +63,42 @@ ConstraintsLF  = (
 
 print(ConstraintsLF)
 
-rules = LFSet("Constraints_LF")
-rules.add_lf_list(ConstraintsLF)
+# rules = LFSet("Constraints_LF")
+# rules.add_lf_list(ConstraintsLF)
 
-from spear.labeling import PreLabels
-from helper.utils import process_data
-import pandas as pd
+# from spear.labeling import PreLabels
+# from helper.utils import process_data
+# import pandas as pd
 
-# processed_data_path="../LFs/data/processed/"
-full_path = "D:/IITB/LF/data/processed/version7/full.csv"
-df_full = pd.read_csv(full_path)
-all_tasks = df_full.columns[1:]
-print("---->>all tasks", all_tasks)
+# # processed_data_path="../LFs/data/processed/"
+# full_path = "../../data/processed/version7/full.csv"
+# df_full = pd.read_csv(full_path)
+# all_tasks = df_full.columns[1:]
+# print("---->>all tasks", all_tasks)
 
-X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U = process_data(
-    is_data_split=False,
-    model="JL",
-    processed_data_path="./data/processed/",
-    version=7,
-    labels="Constraints",
-    test_per=0.15,
-    val_per=0.15,
-    label_per=0.2,
-    multilabel=True,
-    seed=42,
-    print_shape=False
-)
-print(X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U)
-print("Y_V===================>>>", Y_V)
-V_path_pkl='D:/IITB/LF/LFs/Constraints/result/Constraints.pkl'
-path_json='D:/IITB/LF/LFs/Constraints/result/Constraints.json'
-Constraints_noisy_labels = PreLabels(name="constraints",
-                               data=X_T,
-                               gold_labels=Y_T,
-                               data_feats=X_feats_T,
-                               rules=rules,
-                               labels_enum=ClassLabels,
-                               num_classes=17)
-Constraints_noisy_labels.generate_pickle(V_path_pkl)
-Constraints_noisy_labels.generate_json(path_json)
+# X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U = process_data(
+#     is_data_split=False,
+#     model="JL",
+#     processed_data_path="../../data/processed/",
+#     version=7,
+#     labels="Constraints",
+#     test_per=0.15,
+#     val_per=0.15,
+#     label_per=0.2,
+#     multilabel=True,
+#     seed=42,
+#     print_shape=False
+# )
+# print(X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U)
+# print("Y_V===================>>>", Y_V)
+# V_path_pkl='D:/IITB/LF/LFs/Constraints/result/Constraints.pkl'
+# path_json='D:/IITB/LF/LFs/Constraints/result/Constraints.json'
+# Constraints_noisy_labels = PreLabels(name="constraints",
+#                                data=X_T,
+#                                gold_labels=Y_T,
+#                                data_feats=X_feats_T,
+#                                rules=rules,
+#                                labels_enum=ClassLabels,
+#                                num_classes=17)
+# Constraints_noisy_labels.generate_pickle(V_path_pkl)
+# Constraints_noisy_labels.generate_json(path_json)

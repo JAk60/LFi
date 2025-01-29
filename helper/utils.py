@@ -182,7 +182,7 @@ def load_data_train_test_split(
         is_data_split=True, 
         labels="Category",
         multilabel=False,
-        is_generate_embed=False):
+        is_generate_embed=True):
     """
     Load dataset with optional train-test split.
     
