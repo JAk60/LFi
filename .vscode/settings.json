@@ -1,3 +1,4 @@
 {
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "python.pythonPath": "/home/user/IITB/LFi/venv/bin/python3.11"
 }

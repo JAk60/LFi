@@ -1,5 +1,5 @@
 import enum
-from LFs.category.missionLF import CLF1, CLF2, LF1, LF10, LF11, LF12, LF13, LF14, LF15, LF2, LF5, LF6, LF7, LF8, LF9, LFS
+from .missionLF import CLF1, CLF2, LF1, LF10, LF11, LF12, LF13, LF14, LF15, LF2, LF5, LF6, LF7, LF8, LF9, LFS
 from spear.labeling import PreLabels
 from helper.utils import process_data
 import pandas as pd

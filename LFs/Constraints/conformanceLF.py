@@ -19,6 +19,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -65,10 +66,10 @@ def CONFORMANCELF1(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the mission must comply with international maritime laws.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -79,10 +80,10 @@ def CONFORMANCELF2(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the operations must adhere to environmental regulations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -93,10 +94,10 @@ def CONFORMANCELF3(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the ship must follow specific navigation routes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -107,10 +108,10 @@ def CONFORMANCELF4(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the crew must comply with safety protocols.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -121,10 +122,10 @@ def CONFORMANCELF5(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the mission must conform to allied nations guidelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -135,10 +136,10 @@ def CONFORMANCELF6(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the ship must adhere to communication blackout periods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -149,10 +150,10 @@ def CONFORMANCELF7(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the operations must comply with noise pollution limits.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -163,10 +164,10 @@ def CONFORMANCELF8(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the ship must follow specific refueling procedures.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -177,10 +178,10 @@ def CONFORMANCELF9(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the mission must conform to humanitarian aid standards.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -191,10 +192,10 @@ def CONFORMANCELF10(x):
 
     result = ClassLabels.CONFORMANCE if extractor.apply_rule(
         'If the ship must adhere to maintenance schedules.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

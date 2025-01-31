@@ -19,6 +19,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -65,10 +66,10 @@ def WORKING_HOURSLF1(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the crew must work extended hours for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -79,10 +80,10 @@ def WORKING_HOURSLF2(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the working hours must be managed for crew health.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -93,10 +94,10 @@ def WORKING_HOURSLF3(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the crew must be available for emergency response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -107,10 +108,10 @@ def WORKING_HOURSLF4(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the working hours must be coordinated with mission timelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -121,10 +122,10 @@ def WORKING_HOURSLF5(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the crew must be prepared for high-intensity operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -135,10 +136,10 @@ def WORKING_HOURSLF6(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the working hours must be optimized for efficiency.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -149,10 +150,10 @@ def WORKING_HOURSLF7(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the crew must be available for search and rescue operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -163,10 +164,10 @@ def WORKING_HOURSLF8(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the working hours must be managed for cost-effectiveness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -177,10 +178,10 @@ def WORKING_HOURSLF9(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the crew must be ready for disaster relief operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -191,10 +192,10 @@ def WORKING_HOURSLF10(x):
 
     result = ClassLabels.WORKING_HOURS if extractor.apply_rule(
         'If the working hours must be compatible with crew capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

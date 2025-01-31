@@ -20,6 +20,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -66,10 +67,10 @@ def RELIABILITYLF1(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the ship"s systems must be reliable for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -80,10 +81,10 @@ def RELIABILITYLF2(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the equipment must be dependable for continuous operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -94,10 +95,10 @@ def RELIABILITYLF3(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the ship must have redundant systems for reliability.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -108,10 +109,10 @@ def RELIABILITYLF4(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the maintenance must be regular for system reliability.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -122,10 +123,10 @@ def RELIABILITYLF5(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the ship must have reliable communication systems.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -136,10 +137,10 @@ def RELIABILITYLF6(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the equipment must be tested for reliability.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -150,10 +151,10 @@ def RELIABILITYLF7(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the ship must have reliable navigation systems.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -164,10 +165,10 @@ def RELIABILITYLF8(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the maintenance must be timely for system reliability.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -178,10 +179,10 @@ def RELIABILITYLF9(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the ship must have reliable power generation.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -192,10 +193,10 @@ def RELIABILITYLF10(x):
 
     result = ClassLabels.RELIABILITY if extractor.apply_rule(
         'If the equipment must be durable for long-term use.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

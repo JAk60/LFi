@@ -11,6 +11,7 @@
 # 10. If backup systems and procedures are in place to handle risks and reduce exposure to failure.
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -30,7 +31,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -57,140 +58,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If the mission aims to achieve objectives while minimizing exposure to danger or harm.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF2_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If all operational actions are designed to reduce the likelihood of unexpected or adverse events.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF2_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF3_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If preventive measures are prioritized to avoid failures, accidents, or losses.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF3_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF4_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If mission plans emphasize the safety of personnel and equipment at every stage.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF4_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF5_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If risk assessments are conducted continuously to adapt the mission plan as necessary.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF5_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF6_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If safety protocols and contingency plans are integral to the mission"s execution.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF6_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF7_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If the mission seeks to avoid high-risk areas or actions that could escalate potential threats.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF7_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF8_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If critical decisions are based on minimizing potential impacts of negative outcomes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF8_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF9_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If the mission avoids unnecessary exposure to hostile or volatile environments.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF9_logs_" +  datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_RISK)
 def MinimumRisk_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumRisk_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_RISK if extractor.apply_rule(
         'If backup systems and procedures are in place to handle risks and reduce exposure to failure.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumRisk_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

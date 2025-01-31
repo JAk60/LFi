@@ -20,6 +20,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -66,10 +67,10 @@ def ENDURANCELF1(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must sustain operations for extended periods without resupply.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -80,10 +81,10 @@ def ENDURANCELF2(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the crew must endure long durations at sea.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -94,10 +95,10 @@ def ENDURANCELF3(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must have sufficient fuel reserves for prolonged missions.', x) == True else ABSTAIN    
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -108,10 +109,10 @@ def ENDURANCELF4(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must be capable of continuous surveillance for weeks.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -122,10 +123,10 @@ def ENDURANCELF5(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must endure harsh weather conditions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -136,10 +137,10 @@ def ENDURANCELF6(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the crew must maintain high alertness for extended periods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -150,10 +151,10 @@ def ENDURANCELF7(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must have reliable power generation for long missions.', x) == True else ABSTAIN        
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -164,10 +165,10 @@ def ENDURANCELF8(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must endure prolonged exposure to enemy threats.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -178,10 +179,10 @@ def ENDURANCELF9(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must have sufficient provisions for extended voyages.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -192,10 +193,10 @@ def ENDURANCELF10(x):
 
     result = ClassLabels.ENDURANCE if extractor.apply_rule(
         'If the ship must endure continuous operational tempo.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

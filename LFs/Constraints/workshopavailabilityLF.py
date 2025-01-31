@@ -20,6 +20,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -66,10 +67,10 @@ def WORKSHOP_AVAILABILITYLF1(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the ship must have onboard workshops for repairs.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -80,10 +81,10 @@ def WORKSHOP_AVAILABILITYLF2(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshops must be available for emergency maintenance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -94,10 +95,10 @@ def WORKSHOP_AVAILABILITYLF3(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshop must be equipped for various repair tasks.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -108,10 +109,10 @@ def WORKSHOP_AVAILABILITYLF4(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshops must be managed for efficiency.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -122,10 +123,10 @@ def WORKSHOP_AVAILABILITYLF5(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the ship must have emergency workshop capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -136,10 +137,10 @@ def WORKSHOP_AVAILABILITYLF6(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshops must be secure against damage.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -150,10 +151,10 @@ def WORKSHOP_AVAILABILITYLF7(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshop must be sufficient for high-intensity operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -164,10 +165,10 @@ def WORKSHOP_AVAILABILITYLF8(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshops must be coordinated with mission timelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -178,10 +179,10 @@ def WORKSHOP_AVAILABILITYLF9(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshops must be managed for cost-effectiveness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -192,10 +193,10 @@ def WORKSHOP_AVAILABILITYLF10(x):
 
     result = ClassLabels.WORKSHOP_AVAILABILITY if extractor.apply_rule(
         'If the workshop must be of high quality to ensure system performance.', x) == True else ABSTAIN     
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

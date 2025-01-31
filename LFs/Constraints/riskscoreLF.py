@@ -20,6 +20,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -66,10 +67,10 @@ def RISK_SCORELF1(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the mission risk must be assessed for crew safety.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -80,10 +81,10 @@ def RISK_SCORELF2(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk score must be low for non-combat operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -94,10 +95,10 @@ def RISK_SCORELF3(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk must be managed for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -108,10 +109,10 @@ def RISK_SCORELF4(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk score must be evaluated for emergency response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -122,10 +123,10 @@ def RISK_SCORELF5(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk must be minimized for humanitarian aid missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -136,10 +137,10 @@ def RISK_SCORELF6(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk score must be assessed for joint exercises.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -150,10 +151,10 @@ def RISK_SCORELF7(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk must be managed for search and rescue operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -164,10 +165,10 @@ def RISK_SCORELF8(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk score must be evaluated for anti-piracy missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -178,10 +179,10 @@ def RISK_SCORELF9(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk must be minimized for maritime security patrols.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -192,10 +193,10 @@ def RISK_SCORELF10(x):
 
     result = ClassLabels.RISK_SCORE if extractor.apply_rule(
         'If the risk score must be assessed for disaster relief operations.', x) == True else ABSTAIN        
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

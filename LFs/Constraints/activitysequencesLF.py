@@ -11,6 +11,7 @@
 'If the sequence of activities is dependent on real-time intelligence.'
 ]
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN , preprocessor,LFSet
 import os
 import numpy as np
@@ -64,140 +65,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF1(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the mission requires synchronized operations across multiple theaters.', x) == True else ABSTAIN 
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF2(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the sequence of activities must be strictly adhered to for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF3(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If coordination between different naval units is critical.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF4(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the timing of actions is crucial for tactical advantage.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF5(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the sequence of logistical support must be maintained.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF6(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the order of operations affects the outcome of the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF7(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the activities must be performed in a specific order to avoid detection.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF8(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the sequence of reconnaissance and surveillance is predefined.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF9(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the activities must be synchronized with allied forces.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.ACTIVITY_SEQUENCES)
 def ACTIVITY_SEQUENCESLF10(x):
-    log_file = f"D:/IITB/LF/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Constraints/csv/ACTIVITY_SEQUENCESLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.ACTIVITY_SEQUENCES if extractor.apply_rule(
         'If the sequence of activities is dependent on real-time intelligence.', x) == True else ABSTAIN     
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

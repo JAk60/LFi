@@ -12,6 +12,7 @@
 
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -31,7 +32,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -57,138 +58,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If the mission requires immediate accomplishment of critical objectives.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If delays risk compromising the success or relevance of the operation.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If the timeline directly impacts strategic or tactical advantages.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If time-sensitive intelligence drives mission planning and execution.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If the operation involves synchronized actions with strict time constraints.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If swift execution is necessary to prevent enemy countermeasures.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If the mission is a rapid response to an emergent threat or opportunity.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If operational goals emphasize speed over resource conservation.', x) == True else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If objectives are designed to minimize enemy recovery time.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_TIME)
 def MinimumTime_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MinimumTime_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_TIME if extractor.apply_rule(
         'If the success of the mission depends on achieving surprise through speed.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MinimumTime_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

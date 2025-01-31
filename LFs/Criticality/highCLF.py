@@ -44,92 +44,92 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If direct lethal combat is imminent.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If nuclear weapons are involved.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If mission requires immediate enemy neutralization.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If personnel face immediate life-threatening risks.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If strategic military assets are under direct threat.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If enemy combatants are actively engaging.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If mission involves capturing high-value military targets.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If precision strikes against critical infrastructure required.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If potential for mass casualty scenario exists.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.High)
 def HighCritical_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/HighCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/HighCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.High if extractor.apply_rule('If total military force projection is necessary.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 # Collect the labeling functions in a list

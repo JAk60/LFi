@@ -105,11 +105,22 @@ from helper.utils import process_data
 import pandas as pd
 
 # Load data
-full_path = "D:/IITB/LF/data/processed/version7/full.csv"
+full_path = "/home/user/IITB/LFi/data/processed/version7/full.csv"
 df_full = pd.read_csv(full_path)
-all_tasks = df_full.columns[1:]
-print("---->>all tasks", all_tasks)
-
+# all_tasks = df_full.columns[1:]
+# print("---->>all tasks", all_tasks)
+all_tasks=[
+# 'Category', 
+# 'SubMission', 
+# 'Criticality',
+# 'Level',
+# 'Action',
+'Entity',
+# 'From',
+# 'TaskObjective', 
+# 'Constraints', 
+# 'ObjectiveFunction'
+]
 for task in all_tasks:
     print(f"Processing task: {task}")
     
@@ -124,7 +135,7 @@ for task in all_tasks:
     X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U = process_data(
         is_data_split=False,
         model="JL",
-        processed_data_path="D:/IITB/LF/data/processed/",
+        processed_data_path="/home/user/IITB/LFi/data/processed/",
         version=7,
         labels=task,
         test_per=0.15,
@@ -139,8 +150,11 @@ for task in all_tasks:
     label_instances = extract_unique_labels(df_full, task)
     label_instances.sort()  
     # Generate output files
-    V_path_pkl = f'D:/IITB/LF/LFs/{task}/result/{task}.pkl'
-    path_json = f'D:/IITB/LF/LFs/{task}/result/{task}.json'
+    V_path_pkl = f'/home/user/IITB/LFi/LFs/{task}/result/{task}_pickle_V.pkl'
+    T_path_pkl = f'/home/user/IITB/LFi/LFs/{task}/result/{task}_pickle_T.pkl'
+    U_path_pkl = f'/home/user/IITB/LFi/LFs/{task}/result/{task}_pickle_U.pkl'
+    L_path_pkl = f'/home/user/IITB/LFi/LFs/{task}/result/{task}_pickle_L.pkl'
+    path_json = f'/home/user/IITB/LFi/LFs/{task}/result/{task}.json'
     
     # Run apply LF
     run_applyLF(
@@ -153,5 +167,8 @@ for task in all_tasks:
         ClassLabels=ClassLabels,
         rules=rules,
         V_path_pkl=V_path_pkl,
+        T_path_pkl=T_path_pkl,
+        U_path_pkl=U_path_pkl,
+        L_path_pkl=L_path_pkl,
         path_json=path_json
     )

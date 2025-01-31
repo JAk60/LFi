@@ -13,6 +13,7 @@
 
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -32,7 +33,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -59,140 +60,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If the mission requires consistent performance under all conditions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If success depends on minimizing the risk of system or equipment failure.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If operational redundancy is critical to ensure uninterrupted functionality.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If all mission components must operate within defined tolerances at all times.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If mission-critical systems must be thoroughly tested and validated beforehand.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If operational plans emphasize robustness over speed or flexibility.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If environmental factors demand highly dependable equipment and personnel.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If fallback mechanisms are essential to recover from potential failures.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If reliability is prioritized to protect lives and mission outcomes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_RELIABILITY)
 def MAXIMUM_RELIABILITY_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_RELIABILITY if extractor.apply_rule(
         'If long-term operational success depends on fault-free execution throughout.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_RELIABILITY_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

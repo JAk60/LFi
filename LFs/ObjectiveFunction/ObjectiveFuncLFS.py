@@ -1,15 +1,15 @@
-from maximumAvailabilityLF import MAXIMUM_AVAILABILITYLFS
-from maximumConformanceLF import MAXIMUM_CONFORMANCELFS
-from maximumReliabilityLF import MAXIMUM_RELIABILITY_LFS
-from minimumCostLF import MINIMUM_COST_LFS
-from minimumDowntimeLF import MINIMUM_DOWNTIMELFS
-from minimumRiskLF import MinimumRisk_LFS
-from minimumTimeLF import MinimumTime_LFS
+from .maximumAvailabilityLF import MAXIMUM_AVAILABILITYLFS
+from .maximumConformanceLF import MAXIMUM_CONFORMANCELFS
+from .maximumReliabilityLF import MAXIMUM_RELIABILITY_LFS
+from .minimumCostLF import MINIMUM_COST_LFS
+from .minimumDowntimeLF import MINIMUM_DOWNTIMELFS
+from .minimumRiskLF import MinimumRisk_LFS
+from .minimumTimeLF import MinimumTime_LFS
 
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -19,8 +19,8 @@ class ClassLabels:
     MINIMUM_RISK = 6
 THRESHOLD = 0.6
 
-ObjectiveFuncLF = MAXIMUM_AVAILABILITYLFS + MAXIMUM_CONFORMANCELFS +MAXIMUM_RELIABILITY_LFS+MINIMUM_COST_LFS+MINIMUM_DOWNTIMELFS+MinimumRisk_LFS+MinimumTime_LFS
-print(ObjectiveFuncLF)
+ObjectiveFunctionLF = MAXIMUM_AVAILABILITYLFS + MAXIMUM_CONFORMANCELFS +MAXIMUM_RELIABILITY_LFS+MINIMUM_COST_LFS+MINIMUM_DOWNTIMELFS+MinimumRisk_LFS+MinimumTime_LFS
+print(ObjectiveFunctionLF)
 
 # rules = LFSet("Objective function_LF")
 # rules.add_lf_list(ObjectiveFuncLF)

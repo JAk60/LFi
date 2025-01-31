@@ -29,6 +29,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -60,140 +61,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF1(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the operation involves direct gunfire exchange.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF2(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the use of firearms is authorized for the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF3(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the target is to be eliminated through gunfire.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF4(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the situation demands immediate gunfire response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF5(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the enemy is within gunfire range and poses a threat.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF6(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the tactical plan includes coordinated gunfire.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF7(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the objective can only be achieved through gunfire.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF8(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the rules of engagement specify the use of gunfire.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF9(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the hostile forces are equipped with firearms.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Gunfiring)
 def GunfiringLF10(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/GunfiringLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/GunfiringLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Gunfiring if extractor.apply_rule(
         'If the mission requires suppressive gunfire to advance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

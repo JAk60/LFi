@@ -29,6 +29,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -57,131 +58,131 @@ def convert_to_lower(x):
 # Combat Labeling Functions
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If operation involves structured military training scenario.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If personnel practice simulated mission protocols.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If objective is skill development and readiness assessment.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If scenario tests tactical response capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If environment mimics potential operational conditions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If equipment and resources are used for training purposes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If mission goal is to evaluate unit performance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If engagement follows predefined training guidelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If potential risks are controlled and monitored.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Exercise)
 def Exercise_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Exercise_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Exercise_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Exercise if extractor.apply_rule(
         'If military preparedness is the primary focus.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

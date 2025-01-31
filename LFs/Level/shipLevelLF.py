@@ -1,4 +1,5 @@
 
+from Level import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -18,10 +19,10 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
-    FLEET=0
-    SHIP=1
-    EQUIPMENT=2
+class ClassLabels(enum.Enum):
+    FLEET = 0
+    SHIP = 1
+    EQUIPMENT = 2
 
 
 THRESHOLD = 0.6
@@ -38,142 +39,151 @@ trigWord2 = {"Repair", "Overhaul", "Refit", "Inspection", "Service", "Check-up",
 def convert_to_lower(x):
     return x.lower().strip()
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If tactical operations or immediate mission execution is required.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If the management of the crew, including assignments and rotations, is necessary.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If responding to an immediate threat or emergency affecting the ship is essential.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If the maintenance and repair of ship-specific equipment is needed.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If setting the course or navigating the ship is required.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If communication protocols and procedures specific to the ship must be followed.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If the management of supplies and inventory specific to the ship is necessary.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If safety protocols and emergency procedures specific to the ship must be enforced.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If conducting training exercises or drills specific to the ship is required.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
-@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIPLEVEL)
+@labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def SHIPLEVEL_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/Level/csv/SHIPLEVEL_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
-    result = ClassLabels.SHIPLEVEL if extractor.apply_rule(
+    result = ClassLabels.SHIP if extractor.apply_rule(
         'If adapting to environmental conditions or weather affecting the ship is necessary.', x) == True else ABSTAIN
 
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/Level/csv/SHIPLEVEL_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

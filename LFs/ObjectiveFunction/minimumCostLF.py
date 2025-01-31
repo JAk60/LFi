@@ -12,6 +12,7 @@
 
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -31,7 +32,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -57,140 +58,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If the mission aims to achieve objectives using the least amount of financial resources.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If resource allocation is focused on achieving efficiency without over-investing in non-essential elements.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If cost-effective solutions are prioritized in operational planning and execution.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If operational decisions emphasize reducing waste and maximizing resource utilization.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If the mission relies on minimal expenditure for equipment, personnel, and logistics.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If the budget is limited, requiring a careful balance between resource needs and mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If cheaper alternatives are explored to meet operational requirements without compromising safety.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If external partnerships or collaborations are leveraged to reduce costs.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If the mission requires a lean operational structure with minimal overhead.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MINIMUM_COST)
 def MINIMUM_COST_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MINIMUM_COST if extractor.apply_rule(
         'If cost reduction strategies are continuously assessed and adjusted throughout the mission"s lifecycle.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MINIMUM_COST_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

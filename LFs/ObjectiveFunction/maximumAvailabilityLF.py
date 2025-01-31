@@ -11,6 +11,7 @@
 # 10. If maintaining operational presence over time is critical to strategic objectives.  
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -30,7 +31,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -56,140 +57,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If the mission requires prolonged operational readiness over extended periods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If resources must be conserved to sustain availability throughout the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If backup systems and redundancy are essential for uninterrupted operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If personnel rotations are planned to maintain continuous readiness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If mission success depends on minimizing downtime of critical assets.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If logistics prioritize steady resupply and resource replenishment.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If operational goals emphasize endurance over speed.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If systems are designed to handle long-term deployments without failure.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If the mission demands adaptability to varying conditions for sustained performance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_AVAILABILITY)
 def MAXIMUM_AVAILABILITY_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_AVAILABILITY if extractor.apply_rule(
         'If maintaining operational presence over time is critical to strategic objectives.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_AVAILABILITY_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

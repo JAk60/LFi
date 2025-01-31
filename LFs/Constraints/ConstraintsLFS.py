@@ -1,20 +1,20 @@
-from activitysequencesLF import ACTIVITY_SEQUENCESLFS
-from balancingloadsLF import BALANCING_LOADSLFS
-from capabilityLF import CAPABILITYLFS
-from conformanceLF import CONFORMANCELFS
-from enduranceLF import ENDURANCELFS
-from fleetavailabilityLF import FLEET_AVAILABILITYLFS
-from fuelLF import FUELLFS
-from logistictimeLF import LOGISTIC_TIMELFS 
-from manpoweravailabilityLF import MANPOWER_AVAILABILITYLFS
-from rationLF import RATIONLFS
-from reliabilityLF import RELIABILITYLFS
-from riskscoreLF import RISK_SCORELFS
-from shipclassLF import SHIP_CLASSLFS
-from sparesavailabilityLF import SPARES_AVAILABILITYLFS
-from speedLF import SPEEDLFS
-from workinghoursLF import WORKING_HOURSLFS
-from workshopavailabilityLF import WORKSHOP_AVAILABILITYLFS
+from .activitysequencesLF import ACTIVITY_SEQUENCESLFS
+from .balancingloadsLF import BALANCING_LOADSLFS
+from .capabilityLF import CAPABILITYLFS
+from .conformanceLF import CONFORMANCELFS
+from .enduranceLF import ENDURANCELFS
+from .fleetavailabilityLF import FLEET_AVAILABILITYLFS
+from .fuelLF import FUELLFS
+from .logistictimeLF import LOGISTIC_TIMELFS 
+from .manpoweravailabilityLF import MANPOWER_AVAILABILITYLFS
+from .rationLF import RATIONLFS
+from .reliabilityLF import RELIABILITYLFS
+from .riskscoreLF import RISK_SCORELFS
+from .shipclassLF import SHIP_CLASSLFS
+from .sparesavailabilityLF import SPARES_AVAILABILITYLFS
+from .speedLF import SPEEDLFS
+from .workinghoursLF import WORKING_HOURSLFS
+from .workshopavailabilityLF import WORKSHOP_AVAILABILITYLFS
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 import os
@@ -42,23 +42,23 @@ class ClassLabels(enum.Enum):
 THRESHOLD = 0.6
 
 ConstraintsLF  = (
-    ACTIVITY_SEQUENCESLFS 
-    # BALANCING_LOADSLFS +
-    # CAPABILITYLFS +
-    # CONFORMANCELFS +
-    # ENDURANCELFS +
-    # FLEET_AVAILABILITYLFS +
-    # FUELLFS +
-    # LOGISTIC_TIMELFS +
-    # MANPOWER_AVAILABILITYLFS +
-    # RATIONLFS +
-    # RELIABILITYLFS +
-    # RISK_SCORELFS +
-    # SHIP_CLASSLFS +
-    # SPARES_AVAILABILITYLFS +
-    # SPEEDLFS +
-    # WORKING_HOURSLFS +
-    # WORKSHOP_AVAILABILITYLFS
+    ACTIVITY_SEQUENCESLFS  +
+    BALANCING_LOADSLFS +
+    CAPABILITYLFS +
+    CONFORMANCELFS +
+    ENDURANCELFS +
+    FLEET_AVAILABILITYLFS +
+    FUELLFS +
+    LOGISTIC_TIMELFS +
+    MANPOWER_AVAILABILITYLFS +
+    RATIONLFS +
+    RELIABILITYLFS +
+    RISK_SCORELFS +
+    SHIP_CLASSLFS +
+    SPARES_AVAILABILITYLFS +
+    SPEEDLFS +
+    WORKING_HOURSLFS +
+    WORKSHOP_AVAILABILITYLFS
 )
 
 print(ConstraintsLF)
@@ -91,8 +91,8 @@ print(ConstraintsLF)
 # )
 # print(X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U)
 # print("Y_V===================>>>", Y_V)
-# V_path_pkl='D:/IITB/LF/LFs/Constraints/result/Constraints.pkl'
-# path_json='D:/IITB/LF/LFs/Constraints/result/Constraints.json'
+# V_path_pkl='/home/user/IITB/LFi/LFs/Constraints/result/Constraints.pkl'
+# path_json='/home/user/IITB/LFi/LFs/Constraints/result/Constraints.json'
 # Constraints_noisy_labels = PreLabels(name="constraints",
 #                                data=X_T,
 #                                gold_labels=Y_T,

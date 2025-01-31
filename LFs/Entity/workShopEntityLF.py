@@ -1,4 +1,5 @@
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -18,7 +19,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     EQUIPMENT=0
     SHIP=1
     WORKSHOP=2
@@ -40,140 +41,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF1(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the operation involves setting up the Workshop for specialized tasks.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF2(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop needs to be equipped with necessary tools and machinery.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF3(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop requires maintenance to ensure operational efficiency.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF4(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop must be staffed with skilled technicians for specific jobs.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF5(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop needs to be organized for optimal workflow.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF6(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop must be inspected for safety compliance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF7(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop requires upgrades to its equipment for enhanced productivity.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF8(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop needs to be stocked with essential materials for projects.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF9(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop must be coordinated with other departments for integrated operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.WORKSHOP)
 def ENTITY_WORKSHOP_LF10(x):
-    log_file = f".D:/IITB/LF/LFs/Entity/csv/ENTITY_WORKSHOP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"./home/user/IITB/LFi/LFs/Entity/csv/ENTITY_WORKSHOP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.WORKSHOP if extractor.apply_rule(
         'If the Workshop needs to be secured against unauthorized access.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

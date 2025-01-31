@@ -19,6 +19,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -65,10 +66,10 @@ def LOGISTIC_TIMELF1(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic support must be timely for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -79,10 +80,10 @@ def LOGISTIC_TIMELF2(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the resupply must be coordinated with mission timelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -93,10 +94,10 @@ def LOGISTIC_TIMELF3(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic time must be minimized for rapid response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -107,10 +108,10 @@ def LOGISTIC_TIMELF4(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the supply chain must be efficient for continuous operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -121,10 +122,10 @@ def LOGISTIC_TIMELF5(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic support must be synchronized with combat operations.', x) == True else ABSTAIN      
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -135,10 +136,10 @@ def LOGISTIC_TIMELF6(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic time must be optimized for cost-effectiveness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -149,10 +150,10 @@ def LOGISTIC_TIMELF7(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the resupply must be timely for humanitarian aid missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -163,10 +164,10 @@ def LOGISTIC_TIMELF8(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic support must be coordinated with allied forces.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -177,10 +178,10 @@ def LOGISTIC_TIMELF9(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the logistic time must be managed for extended missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -191,10 +192,10 @@ def LOGISTIC_TIMELF10(x):
 
     result = ClassLabels.LOGISTIC_TIME if extractor.apply_rule(
         'If the resupply must be timely for emergency situations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

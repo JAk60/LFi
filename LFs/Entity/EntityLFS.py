@@ -1,11 +1,11 @@
-from shipEntityLF import ENTITY_SHIP_LFS
-from workShopEntityLF import ENTITY_WORKSHOP_LFS
-from equipmentEntityLF import ENTITY_EQUIPMENT_LFS
+from .shipEntityLF import ENTITY_SHIP_LFS
+from .workShopEntityLF import ENTITY_WORKSHOP_LFS
+from .equipmentEntityLF import ENTITY_EQUIPMENT_LFS
 
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     EVALUTE=0
     iDENTIFY=1
     SELECT_K_OUT_OF_N=2

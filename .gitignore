@@ -8,10 +8,12 @@ venv/
 env/
 .venv/
 .env/
-
+.env
 # Ignore spear directory
 spear/
-
+LFs/*/result/
+LFs/*/csv
+*.egg-info/
 # Ignore checkpoints directory
 checkpoints/
 
@@ -19,3 +21,6 @@ checkpoints/
 .DS_Store
 Thumbs.db
 helper/glove_w2v.txt
+spear.egg-info/PKG-INFO
+spear.egg-info/SOURCES.txt
+spear.egg-info/top_level.txt

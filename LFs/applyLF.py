@@ -14,6 +14,9 @@ def run_applyLF(
     model="JL",
     seed=42,
     V_path_pkl=None,
+    T_path_pkl=None,
+    U_path_pkl=None,
+    L_path_pkl=None,
     path_json=None
 ):
     """
@@ -50,12 +53,24 @@ def run_applyLF(
     # Process datasets
     datasets = [
         (X_V, Y_V, X_feats_V, V_path_pkl, "Validation"),
-        (X_L, Y_L, X_feats_L, V_path_pkl, "Labeled"),
-        (X_T, Y_T, X_feats_T, V_path_pkl, "Test")
+        (X_L, Y_L, X_feats_L, L_path_pkl, "Labeled"),
+        (X_T, Y_T, X_feats_T, T_path_pkl, "Test"),
+        (X_U,[], X_feats_U,U_path_pkl,"Unlabeled")
     ]
 
     for data, gold_labels, data_feats, pkl_path, dataset_name in datasets:
-        context_noisy_labels = PreLabels(
+        if dataset_name == "Unlabeled":
+            context_noisy_labels = PreLabels(
+                name=labels,
+                data=data,
+                # gold_labels=gold_labels,
+                data_feats=data_feats,
+                rules=rules,
+                labels_enum=ClassLabels,
+                num_classes=len(ClassLabels)
+            )
+        else:
+            context_noisy_labels = PreLabels(
             name=labels,
             data=data,
             gold_labels=gold_labels,

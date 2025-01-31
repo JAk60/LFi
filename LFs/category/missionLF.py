@@ -33,18 +33,18 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)
 def LF1(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     result = ClassLabels.Mission if len(set(x.split()) & trigWord1) > 0 else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 @labeling_function(cont_scorer=word_similarity, resources=dict(keywords=trigWord1), pre=[convert_to_lower], label=ClassLabels.Mission)
 def CLF1(c, **kwargs):
-    log_file = f"D:/IITB/LF/LFs/category/csv/CLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/CLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result=ClassLabels.Mission if kwargs["continuous_score"] >= THRESHOLD else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -54,7 +54,7 @@ def CLF1(c, **kwargs):
 
 @labeling_function(cont_scorer=word_similarity, resources=dict(keywords=trigWord2), pre=[convert_to_lower], label=ClassLabels.Maintenance)
 def CLF2(c, **kwargs):
-    log_file = f"D:/IITB/LF/LFs/category/csv/CLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/CLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result=ClassLabels.Maintenance if kwargs["continuous_score"] >= THRESHOLD else ABSTAIN
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -64,152 +64,152 @@ def CLF2(c, **kwargs):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Maintenance)
 def LF2(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     result = ClassLabels.Maintenance if len(set(x.split()) & trigWord2) > 0 else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)
 def LF5(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'/b([2-9][0-9]|[1-9][0-9]{2,}) nm/b' 
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)
 def LF6(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'/b([4-9]|[1-9][0-9]{2,}) ac/b' 
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)
 def LF7(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'[1-9]{3,} steering pumps' 
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)    
 def LF8(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'stabiliser' 
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)  
 def LF9(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'/b([0-9]|1[0-9]|2[0-9]) kw/b|power generation units on hot standby' 
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)   
 def LF10(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     rpm_pattern = r'/b(1[5-9][0-9]|[2-9][0-9]{2,})/s*rpm/b'
     knots_pattern = r'/b(1[89]|[2-9][0-9]|[1-9][0-9]{2,})/s*knots/b'
     pattern = f'({rpm_pattern})|({knots_pattern})'
     
     result = ClassLabels.Mission if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Maintenance)  
 def LF11(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF11_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF11_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'/b([0-9]|[1-4][0-9])% (das|diesel alternator)/b'
     result = ClassLabels.Maintenance if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Maintenance)  
 def LF12(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF12_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF12_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'Fire pumps on the ship are not in the ready state|Fire pumps available  0|fire pumps are chocked'
     result = ClassLabels.Maintenance if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Maintenance)  
 def LF13(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF13_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF13_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'/b helicopters onboard (1[5-9][0-9]|[2-9][1-9]{1,}) |helicopters are available for next 2 days|helo' 
     result = ClassLabels.Maintenance if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Maintenance)  
 def LF14(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF14_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF14_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     
     pattern = r'radar is not working | sonar is unavailable | sonar system needs to be changed| satelite communication' 
     result = ClassLabels.Maintenance if re.search(pattern, x) else ABSTAIN
-    
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+        if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
     
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Mission)
 def LF15(x):
-    log_file = f"D:/IITB/LF/LFs/category/csv/LF15_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/category/csv/LF15_logs_{datetime.now().strftime('%Y%m%d')}.csv"
    
     d = extractor._extract_distance(x)
     result = ClassLabels.Mission if float(d) > 20 else ABSTAIN

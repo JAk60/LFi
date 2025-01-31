@@ -1,4 +1,5 @@
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -18,7 +19,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     EQUIPMENT=0
     SHIP=1
     WORKSHOP=2
@@ -39,140 +40,140 @@ def convert_to_lower(x):
     return x.lower().strip()
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the operation involves navigating the Ship through hazardous waters.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be prepared for extended deployments.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship requires maintenance to ensure seaworthiness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be equipped with advanced communication systems.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be stocked with essential supplies for the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be manned with trained personnel for specific operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship requires upgrades to its defensive capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be inspected for structural integrity.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship must be coordinated with other vessels for joint operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SHIP)
 def ENTITY_SHIP_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/Entity/csv/ENTITY_SHIP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Entity/csv/ENTITY_SHIP_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.SHIP if extractor.apply_rule(
         'If the Ship needs to be positioned strategically for mission success.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

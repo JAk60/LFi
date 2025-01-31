@@ -29,6 +29,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -57,131 +58,131 @@ def convert_to_lower(x):
 # Combat Labeling Functions
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If mission involves aircraft deployment for specific tactical purpose.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If flight path is pre-planned and strategically defined.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If objective requires specific aerial operational profile.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If aircraft carries specialized mission equipment.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If flight supports strategic reconnaissance or support goals.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If mission requires specific fuel, range, and payload parameters.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If operation involves single aircraft or coordinated squadron movement.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If mission follows precise operational flight protocols.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If flight supports combat, surveillance, or logistical objectives.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Fleetsupport)
 def Sortie_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Sortie_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Sortie_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Fleetsupport if extractor.apply_rule(
         'If operation requires specific pilot skills and aircraft capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 # Create LFSet and add all labeling functions

@@ -1,8 +1,8 @@
-from gunFiringLF import GunfiringLFS
-from InterrogationInterceptionLF import InterrogationInterceptionLFS
-from MaintenanceScheduling import MaintenanceSchedulingLFS
-from missileFiringLF import MissileFiringLFS
-from searchRescueLF import SearchAndRescueLFS
+from .gunFiringLF import GunfiringLFS
+from .InterrogationInterceptionLF import InterrogationInterceptionLFS
+from .MaintenanceScheduling import MaintenanceSchedulingLFS
+from .missileFiringLF import MissileFiringLFS
+from .searchRescueLF import SearchAndRescueLFS
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 class ClassLabels(enum.Enum):

@@ -30,6 +30,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -58,140 +59,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If mission involves direct armed confrontation.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If weapons deployed are lethal and targeted.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If objective is to neutralize enemy combatants.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If strategic positioning requires military intervention.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If personnel are armed and in hostile territory.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If tactical engagement necessitates combat force.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If mission goal is to disrupt enemy capabilities.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If rules of engagement permit offensive strikes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If potential for armed conflict is high.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Combat)
 def Combat_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/SubMission/csv/Combat_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/SubMission/csv/Combat_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.Combat if extractor.apply_rule(
         'If military power projection requires direct action.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

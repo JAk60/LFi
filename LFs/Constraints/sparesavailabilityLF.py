@@ -19,6 +19,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -65,10 +66,10 @@ def SPARES_AVAILABILITYLF1(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the ship must have sufficient spare parts for maintenance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -79,10 +80,10 @@ def SPARES_AVAILABILITYLF2(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spares must be available for emergency repairs.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -93,10 +94,10 @@ def SPARES_AVAILABILITYLF3(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spare parts must be compatible with ship systems.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -107,10 +108,10 @@ def SPARES_AVAILABILITYLF4(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spares must be managed for efficiency.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -121,10 +122,10 @@ def SPARES_AVAILABILITYLF5(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the ship must have emergency spare parts.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -135,10 +136,10 @@ def SPARES_AVAILABILITYLF6(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spares must be secure against damage.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -149,10 +150,10 @@ def SPARES_AVAILABILITYLF7(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spare parts must be sufficient for high-intensity operations.', x) == True else ABSTAIN      
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -163,10 +164,10 @@ def SPARES_AVAILABILITYLF8(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spares must be coordinated with mission timelines.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -177,10 +178,10 @@ def SPARES_AVAILABILITYLF9(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spares must be managed for cost-effectiveness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -191,10 +192,10 @@ def SPARES_AVAILABILITYLF10(x):
 
     result = ClassLabels.SPARES_AVAILABILITY if extractor.apply_rule(
         'If the spare parts must be of high quality to ensure system performance.', x) == True else ABSTAIN  
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

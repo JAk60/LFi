@@ -11,6 +11,7 @@
 # 10. If mission objectives emphasize uniformity and precision over flexibility.  
 
 
+from LFs import LOGGING_ENABLED
 from helper.mistral import SentenceExtractor
 from helper.con_scorer import word_similarity
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
@@ -30,7 +31,7 @@ sys.path.append('../../')
 extractor = SentenceExtractor()
 
 
-class ClassLabels:
+class ClassLabels(enum.Enum):
     MINIMUM_TIME = 0
     MAXIMUM_AVAILABILITY = 1
     MAXIMUM_CONFORMANCE = 2
@@ -57,140 +58,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If the mission requires strict adherence to pre-defined protocols and standards.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF1_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If operational procedures are governed by stringent regulatory requirements.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF2_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If success depends on following established guidelines without deviation.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF3_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If mission activities are subject to legal, ethical, or international compliance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF4_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If consistency in execution is critical to avoid operational risks.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF5_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If deviations from the plan compromise mission integrity or outcomes.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF6_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If reporting and documentation standards must be precisely followed.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF7_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If collaboration with external entities demands strict conformance to agreements.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF8_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If operational audits are anticipated, requiring flawless compliance.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF9_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MAXIMUM_CONFORMANCE)
 def MAXIMUM_CONFORMANCE_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
 
     result = ClassLabels.MAXIMUM_CONFORMANCE if extractor.apply_rule(
         'If mission objectives emphasize uniformity and precision over flexibility.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        log_file = f"/home/user/IITB/LFi/LFs/ObjectiveFunction/csv/MAXIMUM_CONFORMANCE_LF10_logs_" + datetime.now().strftime('%Y%m%d') + ".csv"
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

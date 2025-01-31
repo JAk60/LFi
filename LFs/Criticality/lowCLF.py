@@ -44,92 +44,92 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF1(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If mission is purely observational.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF2(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If no direct personnel threat exists.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF3(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If routine maritime patrol conducted.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF4(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If environmental monitoring is primary goal.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF5(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If communication and documentation are key objectives.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF6(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If standard navigation protocols are followed.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF7(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If civilian maritime safety is focus.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF8(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If equipment maintenance is primary task.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF9(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If training or simulation exercises conducted.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.Low)
 def LowCritical_LF10(x):
-    log_file = f"D:/IITB/LF/LFs/Criticality/csv/LowCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    # log_file = f"/home/user/IITB/LFi/LFs/Criticality/csv/LowCritical_LF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
     result = ClassLabels.Low if extractor.apply_rule('If standard international maritime law compliance is goal.', x) else ABSTAIN
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    # with open(log_file, 'a', newline='') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow([datetime.now(), x, result])
     return result
 
 # Collect the labeling functions in a list

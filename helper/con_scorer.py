@@ -12,9 +12,9 @@ print("glove_w2v model loading")
 model = None
 try:
     # please download glove_w2v.txt file
-    model = KeyedVectors.load_word2vec_format('D:/IITB/LF/helper/glove_w2v.txt', binary=False)
+    model = KeyedVectors.load_word2vec_format('/home/user/IITB/LFi/helper/glove_w2v.txt', binary=False)
 except:
-    model = KeyedVectors.load_word2vec_format('D:/IITB/LF/helper/glove_w2v.txt', binary=False)
+    model = KeyedVectors.load_word2vec_format('/home/user/IITB/LFi/helper/glove_w2v.txt', binary=False)
 print("glove_w2v model loaded")
 
 def get_word_vectors(btw_words):

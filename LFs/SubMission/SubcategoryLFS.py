@@ -26,7 +26,7 @@ print(SubMissionLF)
 # import pandas as pd
 
 # # processed_data_path="../LFs/data/processed/"
-# full_path = "D:/IITB/LF/data/processed/version7/full.csv"
+# full_path = "/home/user/IITB/LFi/data/processed/version7/full.csv"
 # df_full = pd.read_csv(full_path)
 # all_tasks = df_full.columns[1:]
 # print("---->>all tasks", all_tasks)

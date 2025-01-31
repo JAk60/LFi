@@ -31,6 +31,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -62,140 +63,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF1(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the operation involves direct interrogation of suspects.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF2(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the use of interception techniques is authorized for the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF3(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the target is to be interrogated for critical information.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF4(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the situation demands immediate interception of communications.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF5(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the enemy is within interception range and poses a threat.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF6(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the tactical plan includes coordinated interrogation efforts.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF7(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the objective can only be achieved through interrogation.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF8(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the rules of engagement specify the use of interception methods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF9(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the hostile forces are equipped with communication devices.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.InterrogationInterception)
 def InterrogationInterceptionLF10(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/InterrogationInterceptionLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/InterrogationInterceptionLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.InterrogationInterception if extractor.apply_rule(
         'If the mission requires continuous interception to gather intelligence.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

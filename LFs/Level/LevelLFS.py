@@ -1,15 +1,22 @@
-from fleetLevelLF import FLEETLEVEL_LFS
-from shipLevelLF import SHIPLEVEL_LFS
-from equipmentLevelLF import EQUIPMENTLEVEL_LFS
-
+from .fleetLevelLF import FLEETLEVEL_LFS
+from .shipLevelLF import SHIPLEVEL_LFS
+from .equipmentLevelLF import EQUIPMENTLEVEL_LFS
+from Level import LOGGING_ENABLED
+import os
+import sys
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
-
-class ClassLabels:
+print(LOGGING_ENABLED)
+class ClassLabels(enum.Enum):
     FLEET=0
     SHIP=1
     EQUIPMENT=2
 THRESHOLD = 0.6
+
+# Add the LFs directory to Python path if not already there
+LFS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "LFs")
+if LFS_DIR not in sys.path:
+    sys.path.append(LFS_DIR)
 
 LevelLF = FLEETLEVEL_LFS + SHIPLEVEL_LFS +EQUIPMENTLEVEL_LFS
 print(LevelLF)

@@ -1,6 +1,6 @@
-from highCLF import High_Critical_LFS
-from lowCLF import Low_Critical_LFS
-from midCLF import Mid_Critical_LFS
+from .highCLF import High_Critical_LFS
+from .lowCLF import Low_Critical_LFS
+from .midCLF import Mid_Critical_LFS
 import enum
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 class ClassLabels(enum.Enum):

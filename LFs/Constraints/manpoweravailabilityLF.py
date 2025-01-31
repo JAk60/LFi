@@ -20,6 +20,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -66,10 +67,10 @@ def MANPOWER_AVAILABILITYLF1(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the crew must be available for immediate deployment.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -80,10 +81,10 @@ def MANPOWER_AVAILABILITYLF2(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the personnel must be ready for emergency response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -94,10 +95,10 @@ def MANPOWER_AVAILABILITYLF3(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the crew must be prepared for sudden combat operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -108,10 +109,10 @@ def MANPOWER_AVAILABILITYLF4(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the personnel must be available for humanitarian aid missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -122,10 +123,10 @@ def MANPOWER_AVAILABILITYLF5(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the crew must be ready for joint exercises with allied nations.', x) == True else ABSTAIN        
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -136,10 +137,10 @@ def MANPOWER_AVAILABILITYLF6(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the personnel must be available for search and rescue operations.', x) == True else ABSTAIN      
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -150,10 +151,10 @@ def MANPOWER_AVAILABILITYLF7(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the crew must be prepared for anti-piracy missions.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -164,10 +165,10 @@ def MANPOWER_AVAILABILITYLF8(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the personnel must be available for maritime security patrols.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -178,10 +179,10 @@ def MANPOWER_AVAILABILITYLF9(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the crew must be ready for disaster relief operations.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
@@ -192,10 +193,10 @@ def MANPOWER_AVAILABILITYLF10(x):
 
     result = ClassLabels.MANPOWER_AVAILABILITY if extractor.apply_rule(
         'If the personnel must be available for escort duties.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

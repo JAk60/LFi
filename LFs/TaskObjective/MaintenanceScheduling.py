@@ -33,6 +33,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -64,140 +65,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF1(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the operation involves direct scheduling of maintenance tasks.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF2(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the use of maintenance scheduling tools is authorized for the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF3(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the target equipment requires immediate maintenance scheduling.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF4(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the situation demands urgent maintenance scheduling to prevent failures.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF5(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the equipment is within the maintenance window and requires scheduling.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF6(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the tactical plan includes coordinated maintenance scheduling efforts.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF7(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the objective can only be achieved through proper maintenance scheduling.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF8(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the rules of engagement specify the use of maintenance scheduling methods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF9(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         'If the equipment is equipped with sensors requiring maintenance scheduling.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.MaintenanceScheduling)
 def MaintenanceSchedulingLF10(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/MaintenanceSchedulingLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/MaintenanceSchedulingLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.MaintenanceScheduling if extractor.apply_rule(
         ' If the mission requires continuous maintenance scheduling to ensure operational readiness.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 

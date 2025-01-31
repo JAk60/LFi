@@ -55,6 +55,7 @@ import sys
 
 sys.path.append('../../')
 
+from LFs import LOGGING_ENABLED
 from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 
 from helper.con_scorer import word_similarity
@@ -86,140 +87,140 @@ def convert_to_lower(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF1(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the operation involves direct search and rescue efforts.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF2(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the use of search and rescue teams is authorized for the mission.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF3(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the target is to be located and rescued immediately.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF4(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the situation demands urgent search and rescue response.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF5(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the individuals are within the search area and require rescue.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF6(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the tactical plan includes coordinated search and rescue efforts.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF7(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the objective can only be achieved through effective search and rescue.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF8(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the rules of engagement specify the use of search and rescue methods.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF9(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         'If the area is equipped with beacons or signals for search and rescue.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.SearchAndRescue)
 def SearchAndRescueLF10(x):
-    log_file = f"D:/IITB/LF/LFs/Task Objective/csv/SearchAndRescueLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+    log_file = f"/home/user/IITB/LFi/LFs/Task Objective/csv/SearchAndRescueLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
 
     result = ClassLabels.SearchAndRescue if extractor.apply_rule(
         ' If the mission requires continuous search and rescue to ensure safety.', x) == True else ABSTAIN
-
-    with open(log_file, 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([datetime.now(), x, result])
+    if LOGGING_ENABLED and result != ABSTAIN:
+        with open(log_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([datetime.now(), x, result])
 
     return result
 
