@@ -121,21 +121,21 @@ from helper.utils import process_data
 import pandas as pd
 
 # Load data
-full_path = "/home/user/IITB/LFi/data/processed/version7/full.csv"
+full_path = "D:/IITB/LF/data/processed/version7/full.csv"
 df_full = pd.read_csv(full_path)
 # all_tasks = df_full.columns[1:]
 # print("---->>all tasks", all_tasks)
 all_tasks=[
-'Category', 
-'SubMission', 
-'Criticality',
-'Level',
-'Action',
-'Entity',
-'From',
-'TaskObjective', 
+# 'Category', 
+# 'SubMission', 
+# 'Criticality',
+# 'Level',
+# 'Action',
+# 'Entity',
+# 'From',
+# 'TaskObjective', 
 'Constraints', 
-'ObjectiveFunction'
+# 'ObjectiveFunction'
 ]
 for labels in all_tasks:
     print(f"Processing labels: {labels}")
@@ -151,7 +151,7 @@ for labels in all_tasks:
     X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U = process_data(
         is_data_split=False,
         model="JL",
-        processed_data_path="/home/user/IITB/LFi/data/processed/",
+        processed_data_path="D:/IITB/LF/data/processed/",
         version=7,
         labels=labels,
         test_per=0.15,
@@ -166,11 +166,11 @@ for labels in all_tasks:
     label_instances = extract_unique_labels(df_full, labels)
     label_instances.sort()  
     # Generate output files
-    V_path_pkl = f'/home/user/IITB/LFi/LFs/{labels}/result/{labels}_pickle_V.pkl'
-    T_path_pkl = f'/home/user/IITB/LFi/LFs/{labels}/result/{labels}_pickle_T.pkl'
-    U_path_pkl = f'/home/user/IITB/LFi/LFs/{labels}/result/{labels}_pickle_U.pkl'
-    L_path_pkl = f'/home/user/IITB/LFi/LFs/{labels}/result/{labels}_pickle_L.pkl'
-    path_json = f'/home/user/IITB/LFi/LFs/{labels}/result/{labels}.json'
+    V_path_pkl = f'D:/IITB/LF/LFs/{labels}/result/{labels}_pickle_V.pkl'
+    T_path_pkl = f'D:/IITB/LF/LFs/{labels}/result/{labels}_pickle_T.pkl'
+    U_path_pkl = f'D:/IITB/LF/LFs/{labels}/result/{labels}_pickle_U.pkl'
+    L_path_pkl = f'D:/IITB/LF/LFs/{labels}/result/{labels}_pickle_L.pkl'
+    path_json = f'D:/IITB/LF/LFs/{labels}/result/{labels}.json'
     
     # Run apply LF
     run_applyLF(

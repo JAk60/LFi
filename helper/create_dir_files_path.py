@@ -47,8 +47,9 @@ def define_log_and_param_paths(version, labels, model):
     Returns:
         tuple: Tuple containing log and parameter paths.
     """
-    log_path_1 = f'../checkpoint/log/version{version}/{labels}/{model}/context_log_1.txt'
-    params_path = f'../checkpoint/version{version}/{model}/{labels}.pkl'
+    
+    log_path_1 = f'D:/IITB/LF/checkpoint/log/version{version}/{labels}/{model}/context_log_1.txt'
+    params_path = f'D:/IITB/LF/checkpoint/version{version}/{model}/{labels}.pkl'
     return (log_path_1, params_path)
 
 def define_figure_paths(version, labels, model):

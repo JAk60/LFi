@@ -33,50 +33,128 @@ def label_map(label_instances):
     """
     return {label: idx for idx, label in enumerate(label_instances)}
 
-import os
-import numpy as np
 import pandas as pd
+import numpy as np
+import os
+from typing import Dict, List, Tuple
 
-def load_and_preprocess_data_with_embeddings(full_path="../data/processed/version2/full.csv",
-                                              embedding_path="../data/processed/version2/full.npy",
-                                              labels="Category", 
-                                              is_generate_embed=False):
+def get_category_labels() -> Dict[str, List[str]]:
+    """Returns predefined categories and their labels"""
+    return {
+        "Task Objective": [
+            "Gun firing",
+            "Interrogation and interception",
+            "Maintenance scheduling",
+            "Miscellaneous",
+            "Missile firing",
+            "Search and rescue"
+        ],
+        "Constraints": [
+            "Activity sequences",
+            "Balancing loads",
+            "Capability",
+            "Conformance",
+            "Endurance",
+            "Fleet availability",
+            "Fuel",
+            "Logistic time",
+            "Manpower availability",
+            "Ration",
+            "Reliability",
+            "Risk score",
+            "Ship class",
+            "Spares availability",
+            "Speed",
+            "Working hours",
+            "Workshop availability"
+        ],
+        "Objective function": [
+            "Maximum availability",
+            "Maximum conformance",
+            "Maximum reliability",
+            "Minimum cost",
+            "Minimum downtime",
+            "Minimum risk",
+            "Minimum time"
+        ]
+    }
+
+def encode_specific_category(
+    labels_str: str, 
+    category_labels: List[str]
+) -> np.ndarray:
     """
-    Loads data from CSV, processes text, generates or loads embeddings, 
-    and maps labels (handles multilabel classification).
+    Encode labels for a specific labels only.
+    
+    Args:
+        labels_str: Comma-separated string of labels
+        category_labels: List of valid labels for the chosen labels
+        
+    Returns:
+        One-hot encoded array for the specific labels
+    """
+    encoding = np.zeros(len(category_labels))
+    for label in labels_str.split(','):
+        label = label.strip()
+        if label in category_labels:
+            idx = category_labels.index(label)
+            encoding[idx] = 1
+    return encoding
+
+def load_and_preprocess_data_with_embeddings(
+    full_path: str = "../data/processed/version2/full.csv",
+    embedding_path: str = "../data/processed/version2/full.npy",
+    labels: str = "Task Objective",  # Now expects specific labels
+    is_generate_embed: bool = False
+) -> Tuple[pd.Series, np.ndarray, np.ndarray, pd.DataFrame]:
+    """
+    Loads data and creates encodings for a specific labels only.
+    
+    Args:
+        full_path: Path to CSV file
+        embedding_path: Path to embeddings
+        labels: Which labels to encode ("Task Objective", "Constraints", or "Objective function")
+        is_generate_embed: Whether to generate new embeddings
+        
+    Returns:
+        Tuple of (raw text, embeddings, labels-specific encoded labels, full dataframe)
     """
     # Load the dataset
     df_full = pd.read_csv(full_path)
     X = df_full["Scenario"]
     
-    # Check if embeddings already exist or need to be generated
-    print(os.path.exists(embedding_path), is_generate_embed)
+    # Handle embeddings
     if not os.path.exists(embedding_path) and is_generate_embed:
-        # Assuming embedding.scenarios_embedding is a function that generates the embeddings
         features = embedding.scenarios_embedding(list(df_full["Scenario"]))
         np.save(embedding_path, features)
-
-    # Load the embeddings
+    
+    # Load embeddings
     with open(embedding_path, 'rb') as f:
         X_feats = np.load(f)
-
-    # Get unique labels and create label_map
-    label_instances = get_unique_labels(df_full, labels)
-    label_map_dict = label_map(label_instances)
-
-    # Handle multilabels: Assuming the labels are comma-separated in the 'Category' column
-    Y = []
-    for label_list in df_full[labels]:
-        labels = label_list.split(",")  # Modify this if labels are formatted differently
-        label_vector = [0] * len(label_map_dict)
-        for label in labels:
-            label = label.strip()
-            if label in label_map_dict:
-                label_vector[label_map_dict[label]] = 1
-        Y.append(label_vector)
-
-    Y = np.array(Y)
-
+    
+    # Get labels for specific labels
+    categories = get_category_labels()
+    if labels not in categories:
+        raise ValueError(f"Labels must be one of {list(categories.keys())}")
+    
+    category_labels = categories[labels]
+    
+    # Create encodings for specific labels only
+    Y = np.array([
+        encode_specific_category(label_list, category_labels)
+        for label_list in df_full[labels]
+    ])
+    
+    # Print shape information
+    print(f"\nEncoding details:")
+    print(f"Selected labels: {labels}")
+    print(f"Number of {labels} labels: {len(category_labels)}")
+    print(f"X shape (scenarios): {X.shape}")
+    print(f"Y shape (labels): {Y.shape}")
+    print(f"Label meanings:")
+    for idx, label in enumerate(category_labels):
+        print(f"  Position {idx}: {label}")
+    
     return X, X_feats, Y, df_full
 
 
