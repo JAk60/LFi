@@ -1,10 +1,12 @@
+import enum
+
 from .combatLF import Combat_LFS
 from .exerciseLF import Exercise_LFS
 from .fleetsupportLF import Fleetsupport_LFS
 from .humanitarianLF import Humanitarian_LFS
 from .sortieLF import Sortie_LFS
-import enum
-from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
+
+
 class ClassLabels(enum.Enum):
     Combat = 0
     Exercise = 1
@@ -13,9 +15,12 @@ class ClassLabels(enum.Enum):
     Miscellaneous = 4
     Humanitarian = 5
 
+
 THRESHOLD = 0.6
 
-SubMissionLF = Combat_LFS + Exercise_LFS +Fleetsupport_LFS+Humanitarian_LFS+Sortie_LFS
+SubMissionLF = (
+    Combat_LFS + Exercise_LFS + Fleetsupport_LFS + Humanitarian_LFS + Sortie_LFS
+)
 print(SubMissionLF)
 
 # rules = LFSet("Sub - mission_LF")

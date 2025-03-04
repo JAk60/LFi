@@ -1,4 +1,23 @@
 {
-    "python.analysis.autoImportCompletions": true,
-    "python.pythonPath": "/home/user/IITB/LFi/venv/bin/python3.11"
+  "python.analysis.autoImportCompletions": true,
+  "python.pythonPath": "/home/user/IITB/LFi/venv/bin/python3.11",
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "ms-python.python",
+  "python.formatting.provider": "black",
+
+  // Ruff linting configuration
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": false,
+  "python.linting.pylintEnabled": false,
+  "ruff.enable": true,
+  "ruff.lint.enable": true,
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": true,
+      "source.organizeImports.ruff": true
+    }
+  }
 }

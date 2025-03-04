@@ -1,7 +1,15 @@
-from setuptools import setup, find_packages
+# from setuptools import setup, find_packages
+
+# setup(
+#     name="spear",
+#     version="0.1",
+#     packages=find_packages(),
+# )
+from setuptools import setup
+from Cython.Build import cythonize
+import numpy as np
 
 setup(
-    name="spear",
-    version="0.1",
-    packages=find_packages(),
+    ext_modules=cythonize('utility/cython_utils/permanent.pyx'),
+    include_dirs=[np.get_include()],
 )

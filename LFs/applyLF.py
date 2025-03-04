@@ -1,11 +1,21 @@
-import os
-import numpy as np
 import pandas as pd
+from utils import extract_unique_labels
+
 from spear.labeling import PreLabels
-from utils import extract_unique_labels 
+
 
 def run_applyLF(
-    X_V, X_feats_V, Y_V, X_T, X_feats_T, Y_T, X_L, Y_L, X_feats_L, X_U, X_feats_U,
+    X_V,
+    X_feats_V,
+    Y_V,
+    X_T,
+    X_feats_T,
+    Y_T,
+    X_L,
+    Y_L,
+    X_feats_L,
+    X_U,
+    X_feats_U,
     ClassLabels,
     rules,
     version=1,
@@ -17,7 +27,7 @@ def run_applyLF(
     T_path_pkl=None,
     U_path_pkl=None,
     L_path_pkl=None,
-    path_json=None
+    path_json=None,
 ):
     """
     Apply Labeling Functions (LFs) to datasets and save the resulting noisy labels.
@@ -55,7 +65,7 @@ def run_applyLF(
         (X_V, Y_V, X_feats_V, V_path_pkl, "Validation"),
         (X_L, Y_L, X_feats_L, L_path_pkl, "Labeled"),
         (X_T, Y_T, X_feats_T, T_path_pkl, "Test"),
-        (X_U,[], X_feats_U,U_path_pkl,"Unlabeled")
+        (X_U, [], X_feats_U, U_path_pkl, "Unlabeled"),
     ]
 
     for data, gold_labels, data_feats, pkl_path, dataset_name in datasets:
@@ -67,24 +77,25 @@ def run_applyLF(
                 data_feats=data_feats,
                 rules=rules,
                 labels_enum=ClassLabels,
-                num_classes=len(ClassLabels)
+                num_classes=len(ClassLabels),
             )
         else:
             context_noisy_labels = PreLabels(
-            name=labels,
-            data=data,
-            gold_labels=gold_labels,
-            data_feats=data_feats,
-            rules=rules,
-            labels_enum=ClassLabels,
-            num_classes=len(ClassLabels)
-        )
+                name=labels,
+                data=data,
+                gold_labels=gold_labels,
+                data_feats=data_feats,
+                rules=rules,
+                labels_enum=ClassLabels,
+                num_classes=len(ClassLabels),
+            )
         if pkl_path:
             context_noisy_labels.generate_pickle(pkl_path)
             print(f"{dataset_name} Pickle Path:", pkl_path)
         if dataset_name == "Validation" and path_json:
             context_noisy_labels.generate_json(path_json)
             print("JSON Path:", path_json)
+
 
 if __name__ == "__main__":
     print("Please provide the required parameters to run the function.")

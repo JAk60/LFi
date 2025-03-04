@@ -1,34 +1,29 @@
-['If the ship"s systems must be reliable for mission success.',
-'If the equipment must be dependable for continuous operations.',
-'If the ship must have redundant systems for reliability.',
-'If the maintenance must be regular for system reliability.',
-'If the ship must have reliable communication systems.',
-'If the equipment must be tested for reliability.',
-'If the ship must have reliable navigation systems.',
-'If the maintenance must be timely for system reliability.',
-'If the ship must have reliable power generation.',
-'If the equipment must be durable for long-term use.']
+[
+    'If the ship"s systems must be reliable for mission success.',
+    "If the equipment must be dependable for continuous operations.",
+    "If the ship must have redundant systems for reliability.",
+    "If the maintenance must be regular for system reliability.",
+    "If the ship must have reliable communication systems.",
+    "If the equipment must be tested for reliability.",
+    "If the ship must have reliable navigation systems.",
+    "If the maintenance must be timely for system reliability.",
+    "If the ship must have reliable power generation.",
+    "If the equipment must be durable for long-term use.",
+]
 
-import os
-import numpy as np
-import re
-import enum
 import csv
-import logging
-from datetime import datetime
+import enum
 import sys
+from datetime import datetime
 
-sys.path.append('../../')
+sys.path.append("../../")
 
-from LFs import LOGGING_ENABLED
-from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
-
-from helper.con_scorer import word_similarity
 from helper.mistral import SentenceExtractor
+from LFs import LOGGING_ENABLED
+from spear.labeling import ABSTAIN, labeling_function, preprocessor
 
 extractor = SentenceExtractor()
 
-import enum
 
 class ClassLabels(enum.Enum):
     ACTIVITY_SEQUENCES = 0
@@ -53,22 +48,96 @@ class ClassLabels(enum.Enum):
 THRESHOLD = 0.6
 
 # Keywords for classification
-trigWord1 = {"fleet", "task force", "maritime operations", "deployment", "patrol", "exercise", "amphibious assault", "maritime security", "maneuvers", "fleet admiral", "base", "aviation", "seaborne operation", "vessel", "blockade", "warfare", "strategy", "surveillance", "convoy", "anti-submarine warfare", "Gunfiring", "mission objectives", "reconnaissance", "domain awareness", "presence", "drills", "escort", "fleet maneuvers", "operations center", "interception","mission","enemy","war", "mission,","mission's"}
+trigWord1 = {
+    "fleet",
+    "task force",
+    "maritime operations",
+    "deployment",
+    "patrol",
+    "exercise",
+    "amphibious assault",
+    "maritime security",
+    "maneuvers",
+    "fleet admiral",
+    "base",
+    "aviation",
+    "seaborne operation",
+    "vessel",
+    "blockade",
+    "warfare",
+    "strategy",
+    "surveillance",
+    "convoy",
+    "anti-submarine warfare",
+    "Gunfiring",
+    "mission objectives",
+    "reconnaissance",
+    "domain awareness",
+    "presence",
+    "drills",
+    "escort",
+    "fleet maneuvers",
+    "operations center",
+    "interception",
+    "mission",
+    "enemy",
+    "war",
+    "mission,",
+    "mission's",
+}
 
-trigWord2 = {"Repair", "Overhaul", "Refit", "Inspection", "Service", "Check-up", "Refurbishment", "Restoration", "Tune-up", "Fix", "Upgrade", "Restoration", "Refurbishment", "Inspection", "Overhaul", "Retrofit", "Revamp", "Refurbish", "Tune", "Lubrication", "Cleaning", "Calibration", "Testing", "Adjustment", "Replacement", "Painting", "Welding", "Greasing", "Polishing", "Troubleshooting","maintenance","annual","repair","restoration"}
+trigWord2 = {
+    "Repair",
+    "Overhaul",
+    "Refit",
+    "Inspection",
+    "Service",
+    "Check-up",
+    "Refurbishment",
+    "Restoration",
+    "Tune-up",
+    "Fix",
+    "Upgrade",
+    "Retrofit",
+    "Revamp",
+    "Refurbish",
+    "Tune",
+    "Lubrication",
+    "Cleaning",
+    "Calibration",
+    "Testing",
+    "Adjustment",
+    "Replacement",
+    "Painting",
+    "Welding",
+    "Greasing",
+    "Polishing",
+    "Troubleshooting",
+    "maintenance",
+    "annual",
+    "repair",
+    "restoration",
+}
+
 
 @preprocessor()
 def convert_to_lower(x):
     return x.lower().strip()
 
+
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF1(x):
-    log_file = f"./csv/RELIABILITYLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the ship"s systems must be reliable for mission success.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            'If the ship"s systems must be reliable for mission success.', x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF1_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -77,12 +146,17 @@ def RELIABILITYLF1(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF2(x):
-    log_file = f"./csv/RELIABILITYLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the equipment must be dependable for continuous operations.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the equipment must be dependable for continuous operations.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF2_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -91,12 +165,17 @@ def RELIABILITYLF2(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF3(x):
-    log_file = f"./csv/RELIABILITYLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the ship must have redundant systems for reliability.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the ship must have redundant systems for reliability.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF3_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -105,12 +184,17 @@ def RELIABILITYLF3(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF4(x):
-    log_file = f"./csv/RELIABILITYLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the maintenance must be regular for system reliability.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the maintenance must be regular for system reliability.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF4_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -119,12 +203,17 @@ def RELIABILITYLF4(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF5(x):
-    log_file = f"./csv/RELIABILITYLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the ship must have reliable communication systems.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the ship must have reliable communication systems.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF5_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -133,12 +222,15 @@ def RELIABILITYLF5(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF6(x):
-    log_file = f"./csv/RELIABILITYLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the equipment must be tested for reliability.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule("If the equipment must be tested for reliability.", x)
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF6_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -147,12 +239,15 @@ def RELIABILITYLF6(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF7(x):
-    log_file = f"./csv/RELIABILITYLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the ship must have reliable navigation systems.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule("If the ship must have reliable navigation systems.", x)
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF7_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -161,12 +256,17 @@ def RELIABILITYLF7(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF8(x):
-    log_file = f"./csv/RELIABILITYLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the maintenance must be timely for system reliability.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the maintenance must be timely for system reliability.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF8_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -175,12 +275,15 @@ def RELIABILITYLF8(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF9(x):
-    log_file = f"./csv/RELIABILITYLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the ship must have reliable power generation.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule("If the ship must have reliable power generation.", x)
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF9_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
@@ -189,17 +292,32 @@ def RELIABILITYLF9(x):
 
 @labeling_function(pre=[convert_to_lower], label=ClassLabels.RELIABILITY)
 def RELIABILITYLF10(x):
-    log_file = f"./csv/RELIABILITYLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
-
-    result = ClassLabels.RELIABILITY if extractor.apply_rule(
-        'If the equipment must be durable for long-term use.', x) == True else ABSTAIN
+    result = (
+        ClassLabels.RELIABILITY
+        if extractor.apply_rule(
+            "If the equipment must be durable for long-term use.", x
+        )
+        == True
+        else ABSTAIN
+    )
     if LOGGING_ENABLED and result != ABSTAIN:
-        with open(log_file, 'a', newline='') as f:
+        log_file = f"./csv/RELIABILITYLF10_logs_{datetime.now().strftime('%Y%m%d')}.csv"
+        with open(log_file, "a", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([datetime.now(), x, result])
 
     return result
 
+
 RELIABILITYLFS = [
-    RELIABILITYLF1, RELIABILITYLF2, RELIABILITYLF3, RELIABILITYLF4, RELIABILITYLF5, RELIABILITYLF6, RELIABILITYLF7, RELIABILITYLF8, RELIABILITYLF9, RELIABILITYLF10
+    RELIABILITYLF1,
+    RELIABILITYLF2,
+    RELIABILITYLF3,
+    RELIABILITYLF4,
+    RELIABILITYLF5,
+    RELIABILITYLF6,
+    RELIABILITYLF7,
+    RELIABILITYLF8,
+    RELIABILITYLF9,
+    RELIABILITYLF10,
 ]

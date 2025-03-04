@@ -1,0 +1,495 @@
+
+import pyodbc
+import decimal
+import pandas as pd
+from Equipment.gt import gt_super_function
+from Equipment.da import da_super_function
+from Equipment.ac import ac_super_function
+from Equipment.srgm import srgm_super_function
+from Equipment.vessel import vessel_super_function
+
+cnxn = pyodbc.connect(
+    driver='{ODBC Driver 18 for SQL Server}',
+    server='192.168.109.215',
+    database='Utility',
+    uid='sa',
+    pwd='Camlab110',
+    port=1433,
+    TrustServerCertificate='yes'
+)
+
+cursor = cnxn.cursor()
+import logging
+
+# Configure logging
+logging.basicConfig(
+    filename="app.log",  
+    level=logging.INFO,  
+    format="%(asctime)s - %(levelname)s - %(message)s",  
+    datefmt="%Y-%m-%d %H:%M:%S"  
+)
+# def ["Harbour" "Cruise" "Action"]():
+#     return ["Harbour" "Cruise" "Action"]
+def get_kn_data():
+    return {
+        "Harbour":{
+        "GT": {
+            "k":4,
+            "N":4,
+            "S":[1,2,3,4]
+        },
+        "DA":{
+            "K":4,
+            "N":4,
+            "S":[1,2,3,4]
+        },
+        "AC":{
+            "K":5,
+            "N":5,
+            "S":[1,2,3,4,5] 
+        },
+        "VESSEL":{
+            "K":1,
+            "N":1,
+            "S":[1]
+        }
+        },
+        "Cruise":{
+        "GT": {
+            "k":"1+1",
+            "N":4,
+            "S":[2,4]
+        },
+        "DA":{
+            "K":3,
+            "N":4,
+            "S":[1,2,3]
+        },
+        "AC":{
+            "K":3,
+            "N":5,
+            "S":[2,4,5] 
+        },
+        "VESSEL":{
+            "K":1,
+            "N":1,
+            "S":[1]
+        }
+        },
+        "Action":{
+        "GT": {
+            "k":4,
+            "N":4,
+            "S":[1,2,3,4]
+        },
+        "DA":{
+            "K":4,
+            "N":4,
+            "S":[1,2,3,4]
+        },
+        "AC":{
+            "K":5,
+            "N":5,
+            "S":[1,2,3,4,5] 
+        },
+        "SRGM":{
+            "K":1,
+            "N":1,
+            "S":[1]
+        },
+        "VESSEL":{
+            "K":1,
+            "N":1,
+            "S":[1]
+        }
+    }
+    }
+def filter_probabilities_for_phase(x,probabilities, phase,equipment):
+    print(phase,equipment)
+    kn_data = get_kn_data()
+    phase_data = kn_data.get(phase, {}).get(equipment, {})
+    print(phase_data)
+
+    if not phase_data:
+        return []  # Return empty list if phase not found
+
+    s_values = phase_data.get("S", [])
+    print(probabilities)
+    # Filter probabilities based on indices from S values
+    utility_all = [prob for prob, idx in zip(probabilities, range(len(probabilities))) if idx + 1 in s_values]
+    utility=0
+    if utility_all:
+        utility=min(utility_all)
+    print("-------------->>>>",x,utility,utility_all)
+    return utility
+
+
+import pandas as pd
+
+def process_turbine_data(data_tuple):
+    # 'Maintenance (Pending MAJOR defects)'
+    # 'Maintenance (Pending preventive maintenance)'
+    # 'Capability (Multiple fuel acceptance) (%)'
+    # Extract the string of values and convert to list
+    c1_values = [float(x) for x in data_tuple[5].split(',')]
+    c5_values = [float(x) for x in data_tuple[6].split(',')]
+    
+    # Initialize DataFrame with C1 and C5
+    df_dict = {
+        'C1': c1_values
+    }
+
+    if data_tuple[1] == 'Capability (Ammunition types)':
+        if data_tuple[7] == 3:
+            df_dict['C2'] = [2]
+            df_dict['C3'] = [2]
+            df_dict['C4'] = [1]
+        pass
+
+    if data_tuple[1] == 'Capability (Multiple fuel acceptance) (%)':
+        print("it entered")
+        if data_tuple[7] == 1:
+            df_dict['C2'] = [0.05, 0.05, 0.05, 0.05]
+            df_dict['C3'] = [0.05, 0.05, 0.05, 0.05]
+            df_dict['C4'] = [0.05, 0.05, 0.05, 0.05]
+        elif data_tuple[7] == 2:
+            df_dict['C2'] = [0.5, 0.5, 0.5, 0.5]
+            df_dict['C3'] = [0.5, 0.5, 0.5, 0.5]
+            df_dict['C4'] = [0.5, 0.5, 0.5, 0.5]
+        elif data_tuple[7] == 3:
+            df_dict['C2'] = [0.4, 0.4, 0.3, 0.3]
+            df_dict['C3'] = [0.4, 0.4, 0.3, 0.3]
+            df_dict['C4'] = [0.4, 0.4, 0.3, 0.3]
+
+    if (data_tuple[1] in ['Maintenance (Pending MAJOR defects)', 'Maintenance (Pending preventive maintenance)'] 
+        and (data_tuple[7] == 1 or data_tuple[7] == 3)):
+        # Add 1 to each element of C1 to create C2
+        df_dict['C2'] = [x + 1 for x in c1_values]
+        df_dict['C3'] = [x + 2 for x in c1_values]
+        df_dict['C4'] = [x + 3 for x in c1_values]
+    elif data_tuple[1] == 'Maintenance (Pending MAJOR defects)' and data_tuple[7] == 2:
+        df_dict['C2'] = [x + 1 for x in c1_values]
+        df_dict['C3'] = [x + 2 for x in c1_values]
+        df_dict['C4'] = [x + 3 for x in c1_values]
+    elif data_tuple[1] == 'Maintenance (Pending preventive maintenance)' and (data_tuple[7] == 1 or data_tuple[7] == 2):
+        df_dict['C2'] = [x + 2 for x in c1_values]
+        df_dict['C3'] = [x + 3 for x in c1_values]
+        df_dict['C4'] = [x + 4 for x in c1_values]
+    
+    # Only add columns for non-None multipliers
+    if data_tuple[8] is not None and data_tuple[1] != 'Capability (Ammunition types)':
+        multiplier_c2 = float(data_tuple[8])
+        df_dict['C2'] = [x * multiplier_c2 for x in c1_values]
+        
+    if data_tuple[9] is not None and data_tuple[1] != 'Capability (Ammunition types)':
+        multiplier_c3 = float(data_tuple[9])
+        df_dict['C3'] = [x * multiplier_c3 for x in c1_values]
+        
+    if data_tuple[10] is not None and data_tuple[1] != 'Capability (Ammunition types)':
+        multiplier_c4 = float(data_tuple[10])
+        df_dict['C4'] = [x * multiplier_c4 for x in c1_values]
+    
+    df_dict['C5'] = c5_values
+    # Create DataFrame
+    df = pd.DataFrame(df_dict)
+    return df
+
+
+import pandas as pd
+import logging
+
+def depalgo():
+    # Initialize the DataFrame with specific equipment types
+    equipment_types = ['Gas Turbine', 'Diesel Engine', 'AC', 'SRGM', 'VESSEL']
+    
+    # Dictionary to store all N_values for each equipment
+    all_n_values = {equipment: [] for equipment in equipment_types}
+    
+    # Define columns and phases
+    phases = ["Harbour"]
+    kn = get_kn_data()  # Assuming this function is defined elsewhere
+    
+    # Process each equipment type separately
+    for equipment_type in equipment_types:
+        # Get parameters for this specific equipment
+        query = '''SELECT * FROM Parameter WHERE EquipmentName=? AND PhaseID=2'''
+        cursor.execute(query, equipment_type)
+        parameters = cursor.fetchall()
+        
+        for param in parameters:
+            v = process_turbine_data(param)
+            c = []
+            
+            # Process based on equipment type
+            if equipment_type == 'Gas Turbine':
+                c = gt_super_function(v, param)
+                N = filter_probabilities_for_phase(param[1], c, phases[0], "GT")
+            elif equipment_type == 'Diesel Engine':
+                c = da_super_function(v, param)
+                N = filter_probabilities_for_phase(param[1], c, phases[0], "DA")
+            elif equipment_type == 'AC':
+                c = ac_super_function(v, param)
+                N = filter_probabilities_for_phase(param[1], c, phases[0], "AC")
+            elif equipment_type == 'SRGM':
+                c = srgm_super_function(v, param)
+                N = filter_probabilities_for_phase(param[1], c, phases[0], "SRGM")
+            elif equipment_type == 'VESSEL':
+                c = vessel_super_function(v, param)
+                N = filter_probabilities_for_phase(param[1], c, phases[0], "VESSEL")
+            
+            if N is not None:
+                all_n_values[equipment_type].append(N)
+                logging.info(f"{param[1]} : {equipment_type} with {phases[0]} has Utility: {N}")
+
+    # Ensure all lists have exactly 20 elements, filling missing ones with 0
+    for key in all_n_values:
+        all_n_values[key] = all_n_values[key] + [0] * (20 - len(all_n_values[key]))
+
+    # Convert dictionary to DataFrame (transpose to get 20 columns)
+    df = pd.DataFrame.from_dict(all_n_values, orient='index')
+
+    # Ensure DataFrame has 20 columns
+    df = df.iloc[:, :20]  # Trim if extra
+    while df.shape[1] < 20:
+        df[df.shape[1]] = 0  # Add missing columns
+
+    # Rename columns as N1, N2, ..., N20
+    df.columns = [f'N{i+1}' for i in range(0, 20)]
+
+    # Log final DataFrame
+    logging.info("\nFinal DataFrame:")
+    logging.info("\n" + df.to_string())
+
+    return df
+
+import pandas as pd
+
+import pandas as pd
+import numpy as np
+from itertools import permutations
+
+# Function to process the equipment DataFrame
+def process_equipment_df(df):
+    """
+    Process DataFrame to calculate minimums of specific groups for different equipment types.
+    Returns a new DataFrame with exactly 5 rows and 10 columns (filled with 0 if needed).
+    """
+    columns = [
+    'Capacity', 'Capability', 'Reliability', 'Op. Availability',
+    'Op. Maintainability', 'Safety', 'Maintenance', 'Stealth',
+    'Non Vulnerability', 'Recoverability'
+]
+    # Define the fixed structure for result_df
+    result_df = pd.DataFrame(columns=columns, index=df.index)
+    
+    for idx in df.index:
+        row = df.loc[idx]
+        grouped_values = []
+
+        if idx == 'Gas Turbine':
+            grouped_values = [
+                min(row[['N1', 'N2', 'N3']]),
+                min(row[['N4', 'N5', 'N6']]),
+                row['N7'],
+                row['N8'],
+                row['N9'],
+                min(row[['N10', 'N11', 'N12']]),
+                min(row[['N13', 'N14', 'N15']]),
+            ]
+        
+        elif idx == 'Diesel Engine':
+            grouped_values = [
+                min(row[['N1', 'N2', 'N3']]),
+                row['N4'],
+                row['N5'],
+                row['N6'],
+                row['N7'],
+                min(row[['N8', 'N9', 'N10']]),
+                min(row[['N11', 'N12', 'N13']]),
+            ]
+        
+        elif idx == 'AC':
+            grouped_values = [
+                row['N1'],
+                row['N2'],
+                row['N3'],
+                row['N4'],
+                row['N5'],
+                min(row[['N6', 'N7', 'N8']]),
+                min(row[['N9', 'N10', 'N11']]),
+            ]
+
+        elif idx == 'SRGM':
+            grouped_values = [
+                min(row[['N1', 'N2', 'N3']]),
+                min(row[['N4', 'N5', 'N6', 'N7']]),
+                row['N8'],
+                row['N9'],
+                row['N10'],
+                min(row[['N11', 'N12', 'N13']]),
+                min(row[['N14', 'N15', 'N16']]),
+            ]
+        
+        elif idx == 'VESSEL':
+            grouped_values = [
+                min(row[['N1', 'N2']]),
+                min(row[['N3', 'N4', 'N5', 'N6']]),
+                row['N7'],
+                row['N8'],
+                row['N9'],
+                min(row[['N10', 'N11', 'N12']]),
+                min(row[['N13', 'N14', 'N15']]),
+                min(row[['N16', 'N17', 'N18']]),
+                row['N19'],
+                row['N20'],
+            ]
+
+        # Fill remaining values with 0 to ensure exactly 10 columns
+        grouped_values += [0] * (10 - len(grouped_values))
+
+        # Assign values to result DataFrame
+        result_df.loc[idx] = grouped_values
+
+    return result_df
+
+# Example usage:
+df = depalgo()  # Get the 20-column DataFrame
+print(df)
+result_df = process_equipment_df(df)  # Process it using grouping logic
+
+print("\nProcessed DataFrame with minimums:")
+print(result_df)
+
+# Normalize the matrix data
+def normalize_dataframe(df):
+    """
+    Normalizes a DataFrame by dividing each column by its maximum value,
+    while preserving columns with a maximum value of 0 (keeping them unchanged).
+    
+    Args:
+    df (pd.DataFrame): The input DataFrame to be normalized.
+    
+    Returns:
+    pd.DataFrame: A new DataFrame with normalized values.
+    """
+    # Get the maximum values for each column
+    max_values = df.max()
+    
+    # Create a copy of the original DataFrame for the normalized values
+    normalized_df = df.copy()
+
+    # Normalize only the columns with a non-zero max value
+    for col in df.columns:
+        if max_values[col] != 0:
+            normalized_df[col] = df[col] / max_values[col]
+        else:
+            normalized_df[col] = df[col]  # Keep the original if max is zero
+    
+    return normalized_df
+normalized_matrix = normalize_dataframe(result_df)
+
+# Define the matrix data based on the image
+data = {
+    'Capacity': ['A1', 0.6, 0.4, 0.5, 0.2, 0.5, 0.4, 0.1, 0.1, 0.1],
+    'Capability': [0.4, 'A2', 0.3, 0.3, 0.2, 0.2, 0.2, 0.1, 0.1, 0.1],
+    'Reliability': [0.6, 0.7, 'A3', 0.6, 0.3, 0.6, 0.5, 0.1, 0.1, 0.1],
+    'Op. Availability': [0.5, 0.7, 0.4, 'A4', 0.3, 0.5, 0.4, 0.1, 0.1, 0.1],
+    'Op. Maintainability': [0.8, 0.8, 0.7, 0.7, 'A5', 0.7, 0.7, 0.1, 0.1, 0.1],
+    'Safety': [0.5, 0.8, 0.4, 0.5, 0.3, 'A6', 0.4, 0.1, 0.1, 0.1],
+    'Maintenance': [0.6, 0.8, 0.5, 0.6, 0.3, 0.6, 'A7', 0.1, 0.1, 0.1],
+    'Stealth': [0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 'A8', 0.7, 0.7],
+    'Non Vulnerability': [0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.3, 'A9', 0.5],
+    'Recoverability': [0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.3, 0.5, 'A10']
+}
+
+# Define row labels
+index = [
+    'Capacity', 'Capability', 'Reliability', 'Op. Availability',
+    'Op. Maintainability', 'Safety', 'Maintenance', 'Stealth',
+    'Non Vulnerability', 'Recoverability'
+]
+
+# Create the DataFrame
+importance_matrix = pd.DataFrame(data, index=index)
+
+# Display the DataFrame
+print("Importance Matrix:")
+print(importance_matrix)
+
+# Calculate the permanent of a matrix
+def permanent(matrix):
+    n = matrix.shape[0]
+    perm = permutations(range(n))
+    return sum(np.prod([matrix[i, p[i]] for i in range(n)]) for p in perm)
+
+new_matrices = []
+permanents = []
+
+for i in range(5):
+    new_matrix = importance_matrix.copy()
+    for j in range(10):
+        new_matrix.iloc[j, j] = normalized_matrix.iloc[i, j]
+    new_matrices.append(new_matrix)
+
+    # Convert DataFrame to numpy array for permanent calculation
+    matrix_array = new_matrix.values.astype(float)
+    perm = permanent(matrix_array)
+    permanents.append(perm)
+
+# Display the new matrices in DataFrame format along with their permanents
+for i, (matrix, perm) in enumerate(zip(new_matrices, permanents)):
+    print(f"Matrix {i+1} (using row {normalized_matrix.index[i]}):")
+    print(matrix.to_string())
+    print(f"\nPermanent of Matrix {i+1}: {perm}")
+    print("\n" + "="*50 + "\n")
+
+# permanents.sort()
+
+# Normalize permanents
+def normalize_permanents(permanents):
+    # Convert to numpy array for easier calculation
+    permanents_array = np.array(permanents)
+
+    # Calculate the sum of all permanents
+    total = np.sum(permanents_array)
+
+    # Divide each permanent by the total to normalize
+    normalized_permanents = permanents_array / total
+
+    return normalized_permanents
+
+normalized = normalize_permanents(permanents)
+
+print("Original permanents:", permanents)
+print("Normalized permanents:", normalized)
+print("Sum of normalized permanents:", np.sum(normalized))
+
+
+import pandas as pd
+
+def get_row_minimums_nonzero(df):
+    """
+    Function to calculate the minimum value of each row in a DataFrame,
+    considering only values greater than 0.
+    
+    Args:
+    df (pd.DataFrame): Input DataFrame
+    
+    Returns:
+    list: List of minimum nonzero values for each row
+    """
+    return df.replace(0, float('inf')).min(axis=1).replace(float('inf'), 0).tolist()
+
+minimum_list=get_row_minimums_nonzero(result_df)
+
+def multiply_lists(list1, list2):
+    if len(list1) != len(list2):
+        raise ValueError("Both lists must have the same length")
+    
+    return [a * b for a, b in zip(list1, list2)]
+
+
+res = multiply_lists(minimum_list, normalized)
+print(res)  # Output: [5, 12, 21, 32]
+print(sum(res))
+

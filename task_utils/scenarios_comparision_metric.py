@@ -7,13 +7,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 from embedding import scenarios_embedding
 
 # Ensure you have the required NLTK data files
-nltk.download('punkt')
+nltk.download("punkt")
+
 
 def scenarios_cosine_similarity(paragraph1, paragraph2):
-
     embedding1 = scenarios_embedding(paragraph1)
-    embedding2 = scenarios_embedding(paragraph2)   
+    embedding2 = scenarios_embedding(paragraph2)
     return cosine_similarity(embedding1, embedding2)
+
 
 # Function to calculate Jaccard similarity
 def jaccard_similarity(paragraph1, paragraph2):
@@ -23,6 +24,7 @@ def jaccard_similarity(paragraph1, paragraph2):
     union = tokens1.union(tokens2)
     similarity = len(intersection) / len(union)
     return similarity
+
 
 def levenshtein_similarity(paragraph1, paragraph2):
     tokens1 = word_tokenize(paragraph1.lower())
@@ -37,6 +39,7 @@ def test():
     print("Cosine Similarity:", scenarios_cosine_similarity(paragraph1, paragraph2))
     print("Jaccard Similarity:", jaccard_similarity(paragraph1, paragraph2))
     print("Levenshtein Distance:", levenshtein_similarity(paragraph1, paragraph2))
+
 
 if __name__ == "__main__":
     test()

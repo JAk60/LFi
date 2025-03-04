@@ -1,5 +1,5 @@
 import enum
-from datetime import datetime
+
 
 class ClassLabels(enum.Enum):
     Gunfiring = 0
@@ -8,10 +8,11 @@ class ClassLabels(enum.Enum):
     MissileFiring = 3
     SearchAndRescue = 4
 
-def create_labeling_function(label, rule , i):
+
+def create_labeling_function(label, rule, i):
     """
     Generate and return the entire labeling function as a formatted string with the label and rule replaced.
-    
+
     :param label: The classification label (e.g., ClassLabels.Gunfiring)
     :param rule: A single rule string to apply
     :return: String representation of the labeling function
@@ -32,18 +33,19 @@ def {label.name}LF{i}(x):
 """
     return function_template
 
+
 # Example: Printing functions for a specific label and a list of rules
 rules = [
-'If the operation involves direct search and rescue efforts.',
-'If the use of search and rescue teams is authorized for the mission.',
-'If the target is to be located and rescued immediately.',
-'If the situation demands urgent search and rescue response.',
-'If the individuals are within the search area and require rescue.',
-'If the tactical plan includes coordinated search and rescue efforts.',
-'If the objective can only be achieved through effective search and rescue.',
-'If the rules of engagement specify the use of search and rescue methods.',
-'If the area is equipped with beacons or signals for search and rescue.',
-' If the mission requires continuous search and rescue to ensure safety.',
+    "If the operation involves direct search and rescue efforts.",
+    "If the use of search and rescue teams is authorized for the mission.",
+    "If the target is to be located and rescued immediately.",
+    "If the situation demands urgent search and rescue response.",
+    "If the individuals are within the search area and require rescue.",
+    "If the tactical plan includes coordinated search and rescue efforts.",
+    "If the objective can only be achieved through effective search and rescue.",
+    "If the rules of engagement specify the use of search and rescue methods.",
+    "If the area is equipped with beacons or signals for search and rescue.",
+    " If the mission requires continuous search and rescue to ensure safety.",
 ]
 
 label = ClassLabels.SearchAndRescue

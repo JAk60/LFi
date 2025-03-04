@@ -1,20 +1,30 @@
+import enum
+
 from .gunFiringLF import GunfiringLFS
 from .InterrogationInterceptionLF import InterrogationInterceptionLFS
 from .MaintenanceScheduling import MaintenanceSchedulingLFS
 from .missileFiringLF import MissileFiringLFS
 from .searchRescueLF import SearchAndRescueLFS
-import enum
-from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
+
+
 class ClassLabels(enum.Enum):
-    Combat = 0
-    Exercise = 1
-    Fleetsupport = 2
-    Sortie = 3
-    Humanitarian = 4
+    Gunfiring = 0
+    InterrogationInterception = 1
+    MaintenanceScheduling = 2
+    Miscellaneous = 3
+    MissileFiring = 4
+    SearchAndRescue = 5
+
 
 THRESHOLD = 0.6
 
-TaskObjectiveLF = GunfiringLFS + InterrogationInterceptionLFS +MaintenanceSchedulingLFS+MissileFiringLFS+SearchAndRescueLFS
+TaskObjectiveLF = (
+    GunfiringLFS
+    + InterrogationInterceptionLFS
+    + MaintenanceSchedulingLFS
+    + MissileFiringLFS
+    + SearchAndRescueLFS
+)
 print(TaskObjectiveLF)
 
 # rules = LFSet("Task ObjectiveLF")

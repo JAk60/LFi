@@ -15,11 +15,8 @@
 # from LIME import auto_trigWords
 
 
-
-
 # # Define trigger words for each class
 # # trigger_words = [{"mission"}, {"maintenance"}]
-
 
 
 # # Preprocessor function to convert text to lowercase and strip whitespace
@@ -61,7 +58,6 @@
 #     return lf
 
 
-
 # def design_lf(labels,label_instances,version,num_top_words = 2):
 #     # Dynamically create ClassLabels enum
 #     ClassLabels = enum.Enum('ClassLabels', {label_instance: idx for idx, label_instance in enumerate(label_instances)})
@@ -75,7 +71,7 @@
 #     trigger_words_manual = [manual_trigWords(label_instance) for label_instance in label_instances]
 
 #     ## instead of running trigwords agaian and again, please save them
-   
+
 
 #     auto_lf_path = f"../checkpoint/auto_trigWords/version{version}/{labels}.pkl"
 #     os.makedirs(os.path.dirname(auto_lf_path), exist_ok=True)
@@ -93,14 +89,14 @@
 #     auto1 =  [set(list(s)[:len(s)//2]) for s in trigWords]
 #     auto2 = [set(list(s)[len(s)//2:]) for s in trigWords]
 #     ## note : combine these two and select the tops
-#     trigger_words_list = [trigger_words_manual, auto1, auto2] 
+#     trigger_words_list = [trigger_words_manual, auto1, auto2]
 
 
 #     for trigger_words in trigger_words_list:
 #         # print(trigger_words)
 #         for (label_instance, trig_words) in zip(label_instances, trigger_words):
 #             # Check if the current trigger words are in the manual list/set of trigger words
-           
+
 #             if trigger_words == trigger_words_manual:
 #                 lf_name = f"manual_{i}"
 #                 clf_name = f"manual_{i+1}"
@@ -126,4 +122,4 @@
 #     # Add the labeling functions to the rules set
 #     rules.add_lf_list(lfs_list)
 
-#     return ClassLabels, rules 
+#     return ClassLabels, rules

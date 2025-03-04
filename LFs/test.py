@@ -1,8 +1,8 @@
-from importlib import import_module
-from typing import Tuple, List
-from enum import Enum
 import os
 import sys
+from enum import Enum
+from importlib import import_module
+from typing import List, Tuple
 
 # Add the LFs directory to Python path if not already there
 LFS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "LFs")
@@ -10,23 +10,23 @@ if LFS_DIR not in sys.path:
     sys.path.append(LFS_DIR)
 
 MultilabelOrNot = {
-    'Category': False,
-    'Sub - mission': False,
-    'Criticality': False,
-    'Level': False,
-    'Action': False,
-    'Entity': False,
-    'From': False,
-    'Task Objective': True,
-    'Constraints': True,
-    'Objective function': True,
+    "Category": False,
+    "Sub - mission": False,
+    "Criticality": False,
+    "Level": False,
+    "Action": False,
+    "Entity": False,
+    "From": False,
+    "Task Objective": True,
+    "Constraints": True,
+    "Objective function": True,
 }
 
 # Task name transformation mapping
 TASK_NAME_MAPPING = {
-    'Sub - mission': 'SubMission',
-    'Task Objective': 'TaskObjective',
-    'Objective function': 'ObjectiveFunction'
+    "Sub - mission": "SubMission",
+    "Task Objective": "TaskObjective",
+    "Objective function": "ObjectiveFunction",
 }
 
 # Updated MODULE_MAPPING to match actual folder structure
@@ -42,6 +42,7 @@ MODULE_MAPPING = {
     "TaskObjective": "TaskObjective.TaskObjectiveLFS",
 }
 
+
 def normalize_task_name(task_name: str) -> str:
     """
     Normalizes task names to match the MODULE_MAPPING keys.
@@ -49,9 +50,10 @@ def normalize_task_name(task_name: str) -> str:
     # First check if there's a direct mapping
     if task_name in TASK_NAME_MAPPING:
         return TASK_NAME_MAPPING[task_name]
-    
+
     # If no direct mapping, return the original name
     return task_name
+
 
 def get_task_components(task_name: str) -> Tuple[Enum, List]:
     """
@@ -60,26 +62,31 @@ def get_task_components(task_name: str) -> Tuple[Enum, List]:
     try:
         # Normalize the task name to match MODULE_MAPPING keys
         normalized_task_name = normalize_task_name(task_name)
-        
+
         if normalized_task_name not in MODULE_MAPPING:
-            raise ImportError(f"No module mapping found for task {task_name} (normalized: {normalized_task_name})")
-        
+            raise ImportError(
+                f"No module mapping found for task {task_name} (normalized: {normalized_task_name})"
+            )
+
         # Get the module path
         module_path = MODULE_MAPPING[normalized_task_name]
-        
+
         # Import the module
         module = import_module(module_path)
-        
+
         # Get ClassLabels and LF list
-        class_labels = getattr(module, "ClassLabels")
+        class_labels = module.ClassLabels
         task_lfs = getattr(module, f"{normalized_task_name}LF")
-        
+
         return class_labels, task_lfs
-        
+
     except ImportError as e:
-        raise ImportError(f"Failed to import components for task {task_name}: {str(e)}")
+        raise ImportError(f"Failed to import components for task {task_name}: {e!s}")
     except AttributeError as e:
-        raise AttributeError(f"Failed to find required attributes for task {task_name}: {str(e)}")
+        raise AttributeError(
+            f"Failed to find required attributes for task {task_name}: {e!s}"
+        )
+
 
 # Example usage
 if __name__ == "__main__":
@@ -90,4 +97,4 @@ if __name__ == "__main__":
         print(f"ClassLabels: {ClassLabels}")
         print(f"Task LFs: {task_lfs}")
     except Exception as e:
-        print(f"Error: {str(e)}")
+        print(f"Error: {e!s}")

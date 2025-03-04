@@ -1,21 +1,25 @@
+import sys
+
+from .evaluteActionLF import EVALUATE_ACTION_LFS
 from .identifyActionLF import IDENTIFY_ACTION_LFS
 from .selectKoutofNLF import SELECT_K_OUT_OF_N_ACTION_LFS
-from .evaluteActionLF import EVALUATE_ACTION_LFS
-import sys
-sys.path.append('../../')
+
+sys.path.append("../../")
 import enum
-from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
 import os
+
 print(os.getcwd())
+
 
 class ClassLabels(enum.Enum):
     EVALUTE = 0
     iDENTIFY = 1
     SELECT_K_OUT_OF_N = 2
 
+
 THRESHOLD = 0.6
 
-ActionLF = SELECT_K_OUT_OF_N_ACTION_LFS + IDENTIFY_ACTION_LFS +EVALUATE_ACTION_LFS
+ActionLF = SELECT_K_OUT_OF_N_ACTION_LFS + IDENTIFY_ACTION_LFS + EVALUATE_ACTION_LFS
 print(ActionLF)
 
 # rules = LFSet("Action_LF")

@@ -4,15 +4,17 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import matplotlib.pyplot as plt
 
+
 class DeepNet(nn.Module):
-    '''
+    """
         Class for Deep neural network, used in Joint learning class/Algorithm
-        
+
     Args:
         input_size: number of features
         hidden_size: number of nodes in each of the two hidden layers
         output_size: number of classes
-    '''
+    """
+
     def __init__(self, input_size, hidden_size, output_size):
         super(DeepNet, self).__init__()
         self.linear_1 = nn.Linear(input_size, hidden_size)
@@ -24,8 +26,11 @@ class DeepNet(nn.Module):
         out = nn.functional.relu(self.linear_2(out))
         return self.out(out)
 
-def train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs, patience):
-    best_val_loss = float('inf')
+
+def train_model(
+    model, train_loader, val_loader, criterion, optimizer, num_epochs, patience
+):
+    best_val_loss = float("inf")
     best_model_state = None
     epochs_no_improve = 0
     train_losses = []
@@ -65,10 +70,12 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
         val_losses.append(epoch_val_loss)
         val_accuracy = correct / total
 
-        print(f'Epoch {epoch+1}/{num_epochs}, '
-              f'Train Loss: {epoch_loss:.4f}, '
-              f'Val Loss: {epoch_val_loss:.4f}, '
-              f'Val Accuracy: {val_accuracy:.4f}')
+        print(
+            f"Epoch {epoch + 1}/{num_epochs}, "
+            f"Train Loss: {epoch_loss:.4f}, "
+            f"Val Loss: {epoch_val_loss:.4f}, "
+            f"Val Accuracy: {val_accuracy:.4f}"
+        )
 
         # Early stopping
         if epoch_val_loss < best_val_loss:
@@ -78,15 +85,16 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
         else:
             epochs_no_improve += 1
             if epochs_no_improve == patience:
-                print(f'Early stopping at epoch {epoch+1}')
+                print(f"Early stopping at epoch {epoch + 1}")
                 break
 
     # Load the best model state (if early stopping was triggered)
     if best_model_state:
         model.load_state_dict(best_model_state)
 
-    print('Training complete')
+    print("Training complete")
     return train_losses, val_losses
+
 
 def evaluate_model(model, test_loader, criterion):
     model.eval()
@@ -107,17 +115,18 @@ def evaluate_model(model, test_loader, criterion):
     test_loss /= len(test_loader.dataset)
     test_accuracy = correct / total
 
-    print(f'Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}')
+    print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_accuracy:.4f}")
     return test_loss
+
 
 def plot_losses(train_losses, val_losses, num_epochs):
     epochs = range(1, len(train_losses) + 1)
-    plt.plot(epochs, train_losses, 'bo-', label='Training loss')
-    plt.plot(epochs, val_losses, 'go-', label='Validation loss')
-    
-    plt.xlabel('Epochs')
-    plt.ylabel('Loss')
-    plt.title('Training, Validation, and Test Loss')
+    plt.plot(epochs, train_losses, "bo-", label="Training loss")
+    plt.plot(epochs, val_losses, "go-", label="Validation loss")
+
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.title("Training, Validation, and Test Loss")
     plt.legend()
     plt.show()
 
@@ -136,6 +145,7 @@ def inference(model, data_loader):
             probabilities.extend(probs.cpu().numpy())
 
     return predictions, probabilities
+
 
 def test():
     # Example usage
@@ -167,14 +177,14 @@ def test():
     num_epochs = 20
     patience = 5  # Number of epochs to wait for improvement before stopping
 
-    train_losses, val_losses = train_model(model, train_loader, val_loader, criterion, optimizer, num_epochs, patience)
+    train_losses, val_losses = train_model(
+        model, train_loader, val_loader, criterion, optimizer, num_epochs, patience
+    )
     test_loss = evaluate_model(model, test_loader, criterion)
     plot_losses(train_losses, val_losses, num_epochs)
 
     predictions, probabilities = inference(model, test_loader)
     print(f"Predictions: {predictions}\nProbabilities: {probabilities}")
-
-
 
 
 if __name__ == "__main__":

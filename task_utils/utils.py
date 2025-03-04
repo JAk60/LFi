@@ -1,15 +1,24 @@
 import random
 
 import numpy as np
-import pandas as pd
 
 import torch
 
-import pandas as pd
+
 # as the label for sub - mission is not available , so randomly assign label to sub-mission to complete the pipline
-def assign_labels_for_sub_mission(df, sub_mission_labels=["Combat", "Exercise", "Sortie", "Humanitarian", "Fleet", "Support"]):
-    condition1 = (df['Category'] == "Mission")
-    condition2 = (df['Category'] == "Maintenance")
+def assign_labels_for_sub_mission(
+    df,
+    sub_mission_labels=[
+        "Combat",
+        "Exercise",
+        "Sortie",
+        "Humanitarian",
+        "Fleet",
+        "Support",
+    ],
+):
+    condition1 = df["Category"] == "Mission"
+    condition2 = df["Category"] == "Maintenance"
 
     # Create a copy of the DataFrame to avoid SettingWithCopyWarning
     df = df.copy()
@@ -26,16 +35,15 @@ def assign_labels_for_sub_mission(df, sub_mission_labels=["Combat", "Exercise", 
     assigned_values = (sub_mission_labels * (rows_per_value + 1))[:num_rows]
 
     # Assign the values to the 'Sub - mission' column using .loc
-    df.loc[indices, 'Sub - mission'] = assigned_values
+    df.loc[indices, "Sub - mission"] = assigned_values
 
     # Assign "Not Applicable" to rows where condition2 is True using .loc
-    df.loc[condition2, 'Sub - mission'] = "Not Applicable"
+    df.loc[condition2, "Sub - mission"] = "Not Applicable"
 
     # Convert 'Sub - mission' column to string type to ensure compatibility
-    df['Sub - mission'] = df['Sub - mission'].astype(str)
+    df["Sub - mission"] = df["Sub - mission"].astype(str)
 
     return df
-
 
 
 def set_seed(seed):

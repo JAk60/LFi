@@ -1,3 +1,6 @@
+import enum
+import os
+
 from .activitysequencesLF import ACTIVITY_SEQUENCESLFS
 from .balancingloadsLF import BALANCING_LOADSLFS
 from .capabilityLF import CAPABILITYLFS
@@ -5,7 +8,7 @@ from .conformanceLF import CONFORMANCELFS
 from .enduranceLF import ENDURANCELFS
 from .fleetavailabilityLF import FLEET_AVAILABILITYLFS
 from .fuelLF import FUELLFS
-from .logistictimeLF import LOGISTIC_TIMELFS 
+from .logistictimeLF import LOGISTIC_TIMELFS
 from .manpoweravailabilityLF import MANPOWER_AVAILABILITYLFS
 from .rationLF import RATIONLFS
 from .reliabilityLF import RELIABILITYLFS
@@ -15,10 +18,9 @@ from .sparesavailabilityLF import SPARES_AVAILABILITYLFS
 from .speedLF import SPEEDLFS
 from .workinghoursLF import WORKING_HOURSLFS
 from .workshopavailabilityLF import WORKSHOP_AVAILABILITYLFS
-import enum
-from spear.labeling import labeling_function, ABSTAIN, preprocessor, LFSet
-import os
+
 print(os.getcwd())
+
 
 class ClassLabels(enum.Enum):
     ACTIVITY_SEQUENCES = 0
@@ -39,26 +41,27 @@ class ClassLabels(enum.Enum):
     WORKING_HOURS = 15
     WORKSHOP_AVAILABILITY = 16
 
+
 THRESHOLD = 0.6
 
-ConstraintsLF  = (
-    ACTIVITY_SEQUENCESLFS  +
-    BALANCING_LOADSLFS +
-    CAPABILITYLFS +
-    CONFORMANCELFS +
-    ENDURANCELFS +
-    FLEET_AVAILABILITYLFS +
-    FUELLFS +
-    LOGISTIC_TIMELFS +
-    MANPOWER_AVAILABILITYLFS +
-    RATIONLFS +
-    RELIABILITYLFS +
-    RISK_SCORELFS +
-    SHIP_CLASSLFS +
-    SPARES_AVAILABILITYLFS +
-    SPEEDLFS +
-    WORKING_HOURSLFS +
-    WORKSHOP_AVAILABILITYLFS
+ConstraintsLF = (
+    ACTIVITY_SEQUENCESLFS
+    + BALANCING_LOADSLFS
+    + CAPABILITYLFS
+    + CONFORMANCELFS
+    + ENDURANCELFS
+    + FLEET_AVAILABILITYLFS
+    + FUELLFS
+    + LOGISTIC_TIMELFS
+    + MANPOWER_AVAILABILITYLFS
+    + RATIONLFS
+    + RELIABILITYLFS
+    + RISK_SCORELFS
+    + SHIP_CLASSLFS
+    + SPARES_AVAILABILITYLFS
+    + SPEEDLFS
+    + WORKING_HOURSLFS
+    + WORKSHOP_AVAILABILITYLFS
 )
 
 print(ConstraintsLF)
